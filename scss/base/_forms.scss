@@ -1,0 +1,467 @@
+// forms
+
+form,
+fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+}
+
+input::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  .gray-style & {
+    -webkit-box-shadow: 0 0 0px 1000px #f5f5f5 inset;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="date"],
+textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  box-sizing: border-box;
+  border: 0;
+  padding: 0 18px;
+  margin: 0;
+  background: none;
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  line-height: 48px;
+  color: black;
+  border-radius: 6px;
+  position: relative;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  transition: color $animation-speed ease;
+
+  &.red {
+    color: $red;
+  }
+
+  &:focus {
+    @include placeholder {
+      color: transparent;
+    }
+  }
+
+  @include placeholder {
+    color: $placeholder-color;
+  }
+
+  &[data-note] ~ label span,
+  &[data-note] ~ .placeholder span {
+    color: $main;
+  }
+}
+
+select {
+  -webkit-border-radius: 0;
+}
+
+textarea {
+  resize: none;
+  font-size: 16px;
+  line-height: 28px;
+  vertical-align: top;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  min-height: 108px;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="file"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  cursor: pointer;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: white;
+  height: 48px;
+  position: relative;
+  border-radius: 30px;
+  font-size: 14px;
+  padding: 14px 20px 14px 72px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 20px;
+  transition-property: background-color;
+  background: black(.4) url(../images/burger.svg) no-repeat 20px 50% / 13px 13px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 43px;
+    width: 19px;
+    height: 1px;
+    background-color: white(.3);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    opacity: 0;
+    border-radius: 30px;
+    pointer-events: none;
+    border: 2px solid $main;
+    box-shadow: 0px 0px 5px $main;
+  }
+  &:hover {background-color: black;}
+  &[data-right] {
+    padding: 0 72px 0 20px;
+    background-position: calc(100% - 20px) 50%;
+    &::before {
+      left: auto;
+      right: 43px;
+    }
+  }
+  &.active {
+    background-color: black;
+    &::after {opacity: 1;}
+  }
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 0 var(--indent);
+  margin: 0;
+  border: 0;
+  color: white;
+  height: 48px;
+  border-radius: 24px;
+  background: $main;
+  box-shadow: 0px 4px 6px rgba($main, 0.3);
+}
+
+.large-button {
+  display: flex;
+  width: 100%;
+  color: white(.5);
+  margin: 12px auto 0;
+  max-width: 480px;
+  border-radius: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44px var(--indent);
+  background-color: black(.4);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  strong {
+    display: block;
+  }
+  svg {display: block;}
+  &:hover {color: white;}
+}
+
+.input {
+  position: relative;
+  min-height: 48px;
+  margin-bottom: 36px;
+
+  &:focus-within {
+    label {
+
+      &::after {
+        left: 0;
+        width: 100%;
+      }
+
+      span {
+        color: $main;
+        transform: translate3d(-18px, -39px, 0) scale3d(0.75, 0.75, 1);
+      }
+    }
+  }
+
+  input,
+  textarea {
+    position: relative;
+    z-index: 10;
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:not(:placeholder-shown)+label {
+      span {
+        transform: translate3d(-18px, -39px, 0) scale3d(0.75, 0.75, 1);
+      }
+    }
+    
+    &:focus+label {
+
+      &::before {background-color: white;}
+      &::after {opacity: 1;}
+
+      span {
+        transform: translate3d(-18px, -39px, 0) scale3d(0.75, 0.75, 1);
+      }
+    }
+
+    &.error:not(:valid),
+    &:invalid:not(:valid):not(:placeholder-shown) {
+      &+label {
+        &::before {background-color: white;}
+        &::after {
+          opacity: 1;
+          border-color: $red;
+          box-shadow: 0px 0px 5px #EB5757;
+        }
+      }
+
+      & ~.error {opacity: 1;}
+      & ~ .characters {opacity: 0;}
+    }
+
+    &:disabled:not(:placeholder-shown)+label {
+      &::before {
+        background-color: transparent;
+        border: 1px solid $disabled;
+      }
+    }
+  }
+
+  label {
+    @extend %fullscreen;
+    pointer-events: none;
+
+    &::before, &::after {
+      content: '';
+      @extend %fullscreen;
+      border-radius: 6px;
+      pointer-events: none;
+      transition: $animation-speed ease;
+      transition-property: opacity, background-color, border-color, box-shadow;
+    }
+
+    &::before {background-color: #eee;}
+
+    &::after {
+      opacity: 0;
+      z-index: 20;
+      border: 2px solid $main;
+      box-shadow: 0px 0px 5px $main;
+    }
+
+    span {
+      color: $gray;
+      position: absolute;
+      top: 12px;
+      left: 18px;
+      width: 100%;
+      font-size: 16px;
+      line-height: 24px;
+      transform-origin: left center;
+      transition: $animation-speed ease;
+      transition-property: transform, color;
+    }
+  }
+
+  span.error {
+    position: absolute;
+    right: 0;
+    top: -28px;
+    font-size: 12px;
+    line-height: 24px;
+    color: $red;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity $animation-speed ease;
+  }
+
+  .characters {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #A0A0A0;
+    font-size: 12px;
+    line-height: 24px;
+    pointer-events: none;
+    transition: opacity $animation-speed ease;
+  }
+
+  & > svg {
+    position: absolute;
+    z-index: 15;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+  }
+
+  .toggle-password {
+    position: absolute;
+    z-index: 15;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      path {transition: fill $animation-speed ease;}
+    }
+    &:hover svg path {fill: black;}
+    &.selected svg path {fill: $main;}
+  }
+}
+
+.input-note {
+  font-size: 14px;
+  line-height: 24px;
+  color: #828282;
+  text-align: center;
+  margin: -12px 0 24px;
+}
+
+.controller {
+  display: flex;
+  margin-bottom: 36px;
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    &:checked + span {
+      color: #181F22;
+      &::after {opacity: 1;}
+    }
+    &.error + span::after {
+      opacity: 1;
+      border-color: $red;
+      box-shadow: 0px 0px 5px $red;
+    }
+  }
+  span {
+    display: block;
+    color: #828282;
+    position: relative;
+    padding-left: 36px;
+    transition: color $animation-speed ease;
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: opacity $animation-speed ease;
+    }
+    &::before {background-color: #eee;}
+    &::after {
+      opacity: 0;
+      background-color: white;
+      border: 6px solid $main;
+      box-shadow: 0px 0px 5px $main;
+    }
+  }
+  a {
+    color: #181F22;
+    border-bottom: 1px solid;
+  }
+}
+
+.msg-success {
+  position: absolute;
+  top: 12px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  z-index: 30;
+  padding: 0 48px 24px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $animation-speed ease;
+  .middle {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    padding-bottom: 96px;
+    color: $gray;
+  }
+  svg {
+    display: block;
+    margin: 0 auto 24px;
+  }
+  .title {
+    display: block;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #181F22;
+    margin-bottom: 24px;
+    text-transform: capitalize;
+  }
+  p {margin: 0;}
+}
+
+form.success .msg-success {
+  opacity: 1;
+  pointer-events: all;
+}

@@ -1,0 +1,73 @@
+// Typography
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.h {
+  display: block;
+  font-weight: 600;
+  margin: 0;
+  color: $headings-color;
+}
+
+h1,
+.h1 {
+  font-size: $h1-font-size;
+  line-height: 24px;
+}
+
+h2,
+.h2 {
+  font-size: $h2-font-size;
+  line-height: 24px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+h3,
+.h3 {
+  font-size: $h3-font-size;
+  line-height: 24px;
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+
+h4,
+.h4 {
+  font-size: $h4-font-size;
+  margin: 0 0 12px;
+  line-height: 30px;
+}
+
+h5,
+.h5 {
+  font-size: $h5-font-size;
+}
+
+h6,
+.h6 {
+  font-size: $h6-font-size;
+}
+
+p {
+  margin: 0 0 24px;
+}
+
+a {
+  color: $base-link-color;
+  transition: color $animation-speed ease;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
