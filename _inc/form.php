@@ -8,7 +8,9 @@ $data = array(
     'error' => false,
     'status' => 'ok',
     'message' => false,
-    'redirect' => 'cabinet.html'
+    'redirect' => false,
+    'snackbarText' => 'This item already has the label "travel". You can add a new label.',
+    'snackbarButton' => 'ok'
 );
 
 echo json_encode($data);

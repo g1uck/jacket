@@ -194,6 +194,7 @@ $media-expressions: (
   min-height: calc(100vh - 144px);
   .home-layout & {
     padding: 0;
+    min-height: 0;
     background-color: black(.2);
   }
 }
@@ -580,5 +581,61 @@ $media-expressions: (
   .grid {
     padding-bottom: 36px;
     .controller {margin: 0;}
+  }
+}
+
+.snackbar {
+  position: fixed;
+  z-index: 9999;
+  left: var(--indent);
+  bottom: var(--indent);
+  min-width: 344px;
+  max-width: 672px;
+  box-shadow: 0 3px 5px -1px black(.2), 0 6px 10px 0 black(.14), 0 1px 18px 0 black(.12);
+  border-radius: 4px;
+  background-color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fadein $animation-speed linear;
+  &[style="opacity: 0;"] {
+    pointer-events: none;
+    transition: opacity $animation-speed ease;
+  }
+  &__label {
+    color: white(.87);
+    padding: 14px 16px;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .0178571429em;
+  }
+  &__action {
+    color: $main;
+    order: 1;
+    margin: 0 8px 0 0;
+    background: none;
+    border: 0;
+    text-transform: uppercase;
+    padding: 0 8px;
+    font-weight: 600;
+    font-size: .875rem;
+    height: 36px;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: .0892857143em;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

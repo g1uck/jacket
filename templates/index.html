@@ -109,12 +109,12 @@
 				<div class="input">
 					<input autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="login_email" placeholder="Email" required>
 					<label><span>email adresses</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 				</div>
 				<div class="input">
 					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="login_password" placeholder="Password" required>
 					<label><span>Password</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 					<span class="toggle-password">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -134,7 +134,7 @@
 				<div class="input">
 					<input autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="forgot_email" placeholder="Email" required>
 					<label><span>email adresses</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 				</div>
 				<p class="input-note">Enter your details and we'll send you<br>a link to reset your password</p>
 				<button type="submit" class="submit">reset password</button>
@@ -154,22 +154,22 @@
 				<div class="input">
 					<input autocomplete="off" type="text" name="first_name" placeholder="First Name" required>
 					<label><span>First Name</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 				</div>
 				<div class="input">
 					<input autocomplete="off" type="text" name="last_name" placeholder="Last Name" required>
 					<label><span>Last Name</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 				</div>
 				<div class="input">
 					<input autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="reg_email" placeholder="Email" required>
 					<label><span>email adresses</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 				</div>
 				<div class="input">
-					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="reg_password" placeholder="Password" required>
+					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="reg_password" placeholder="Password" id="password" required>
 					<label><span>Password</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 					<span class="toggle-password">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -179,9 +179,9 @@
 					</span>
 				</div>
 				<div class="input">
-					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" placeholder="Confirm Password" required>
+					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" placeholder="Confirm Password" id="confirm-password" required>
 					<label><span>Confirm Password</span></label>
-					<span class="error">Error message</span>
+					<span class="error">This field is required</span>
 					<span class="toggle-password">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path

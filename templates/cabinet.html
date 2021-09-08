@@ -30,7 +30,7 @@
 							</svg>
 						</div>
 						<div class="accordion-exp">
-							<form class="accordion-holder" action="#" method="post">
+							<form class="accordion-holder" action="_inc/form.php" method="post">
 								<div class="grid small">
 									<label class="controller">
 										<input checked type="radio" name="gender_reg" value="Mr.">
@@ -44,12 +44,12 @@
 								<div class="input">
 									<input autocomplete="off" type="text" name="first_name" placeholder="First Name" value="Alex" required>
 									<label><span>First Name</span></label>
-									<span class="error">Error message</span>
+									<span class="error">This field is required</span>
 								</div>
 								<div class="input">
 									<input autocomplete="off" type="text" name="last_name" placeholder="Last Name" value="Master" required>
 									<label><span>Last Name</span></label>
-									<span class="error">Error message</span>
+									<span class="error">This field is required</span>
 								</div>
 								<div class="input">
 									<input autocomplete="off" type="tel" name="phone" placeholder="Phone Number">
@@ -58,7 +58,7 @@
 								<div class="input">
 									<input disabled autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="reg_email" placeholder="Email" value="alexey@gmail.com" required>
 									<label><span>email adresses</span></label>
-									<span class="error">Error message</span>
+									<span class="error">This field is required</span>
 								</div>
 								<button type="submit" class="submit">Save details</button>
 							</form>
@@ -74,11 +74,11 @@
 							</svg>
 						</div>
 						<div class="accordion-exp">
-							<form class="accordion-holder" action="#" method="post">
+							<form class="accordion-holder" action="_inc/form.php" method="post">
 								<div class="input">
 									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="current_password" placeholder="Current Password" required>
 									<label><span>Current Password</span></label>
-									<span class="error">Error message</span>
+									<span class="error">This field is required</span>
 									<span class="toggle-password">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -88,9 +88,9 @@
 									</span>
 								</div>
 								<div class="input">
-									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" placeholder="New Password" required>
+									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" placeholder="New Password" id="password" required>
 									<label><span>New Password</span></label>
-									<span class="error">Error message</span>
+									<span class="error">This field is required</span>
 									<span class="toggle-password">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -100,9 +100,9 @@
 									</span>
 								</div>
 								<div class="input">
-									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" placeholder="Confirm New Password" required>
+									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" placeholder="Confirm New Password" id="confirm-password" required>
 									<label><span>Confirm New Password</span></label>
-									<span class="error">Error message</span>
+									<span class="error">This field is required</span>
 									<span class="toggle-password">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path

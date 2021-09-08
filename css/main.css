@@ -558,9 +558,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none; }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px white inset; }
-  .gray-style input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #f5f5f5 inset; }
+  -webkit-box-shadow: 0 0 0px 1000px #eee inset; }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -867,22 +865,22 @@ input[type="submit"] {
     .input input:focus + label span,
     .input textarea:focus + label span {
       transform: translate3d(-18px, -39px, 0) scale3d(0.75, 0.75, 1); }
-    .input input.error:not(:valid) + label::before, .input input:invalid:not(:valid):not(:placeholder-shown) + label::before,
-    .input textarea.error:not(:valid) + label::before,
+    .input input.error + label::before, .input input:invalid:not(:valid):not(:placeholder-shown) + label::before,
+    .input textarea.error + label::before,
     .input textarea:invalid:not(:valid):not(:placeholder-shown) + label::before {
       background-color: white; }
-    .input input.error:not(:valid) + label::after, .input input:invalid:not(:valid):not(:placeholder-shown) + label::after,
-    .input textarea.error:not(:valid) + label::after,
+    .input input.error + label::after, .input input:invalid:not(:valid):not(:placeholder-shown) + label::after,
+    .input textarea.error + label::after,
     .input textarea:invalid:not(:valid):not(:placeholder-shown) + label::after {
       opacity: 1;
       border-color: #EB5757;
       box-shadow: 0px 0px 5px #EB5757; }
-    .input input.error:not(:valid) ~ .error, .input input:invalid:not(:valid):not(:placeholder-shown) ~ .error,
-    .input textarea.error:not(:valid) ~ .error,
+    .input input.error ~ .error, .input input:invalid:not(:valid):not(:placeholder-shown) ~ .error,
+    .input textarea.error ~ .error,
     .input textarea:invalid:not(:valid):not(:placeholder-shown) ~ .error {
       opacity: 1; }
-    .input input.error:not(:valid) ~ .characters, .input input:invalid:not(:valid):not(:placeholder-shown) ~ .characters,
-    .input textarea.error:not(:valid) ~ .characters,
+    .input input.error ~ .characters, .input input:invalid:not(:valid):not(:placeholder-shown) ~ .characters,
+    .input textarea.error ~ .characters,
     .input textarea:invalid:not(:valid):not(:placeholder-shown) ~ .characters {
       opacity: 0; }
     .input input:disabled:not(:placeholder-shown) + label::before,
@@ -1197,6 +1195,7 @@ form.success .msg-success {
   min-height: calc(100vh - 144px); }
   .home-layout #main {
     padding: 0;
+    min-height: 0;
     background-color: rgba(0, 0, 0, 0.2); }
 
 #footer {
@@ -1550,4 +1549,52 @@ form.success .msg-success {
     padding-bottom: 36px; }
     .accordion-holder .grid .controller {
       margin: 0; }
+
+.snackbar {
+  position: fixed;
+  z-index: 9999;
+  left: var(--indent);
+  bottom: var(--indent);
+  min-width: 344px;
+  max-width: 672px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fadein 0.3s linear; }
+  .snackbar[style="opacity: 0;"] {
+    pointer-events: none;
+    transition: opacity 0.3s ease; }
+  .snackbar__label {
+    color: rgba(255, 255, 255, 0.87);
+    padding: 14px 16px;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .0178571429em; }
+  .snackbar__action {
+    color: #00D1FF;
+    order: 1;
+    margin: 0 8px 0 0;
+    background: none;
+    border: 0;
+    text-transform: uppercase;
+    padding: 0 8px;
+    font-weight: 600;
+    font-size: .875rem;
+    height: 36px;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: .0892857143em; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 /*# sourceMappingURL=main.css.map */

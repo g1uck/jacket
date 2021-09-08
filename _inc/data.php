@@ -7,7 +7,8 @@ $data = array(
     'files' => $_FILES,
     'error' => false,
     'status' => 'ok',
-    'message' => true
+    'message' => true,
+    'redirect' => false
 );
 
 echo json_encode($data);
