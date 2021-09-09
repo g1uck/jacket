@@ -28,9 +28,13 @@ body {
   &.home-layout {
     background: $base-background-color url(../images/background.webp) no-repeat 50% 0 / 100% auto;
   }
-  @include media('<desktop') {
-    min-width: 360px;
+  .mobile &.home-layout {
+    background-position: 0 0;
+    background-size: 1200px auto;
   }
+  // @include media('<desktop') {
+  //   min-width: 360px;
+  // }
 }
 
 // adaptive images

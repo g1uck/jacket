@@ -58,6 +58,11 @@ $media-expressions: (
   padding: 0 var(--indent);
   position: relative;
   margin: 0 auto;
+  & > h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: var(--indent);
+  }
 }
 
 .align-right,
@@ -196,6 +201,31 @@ $media-expressions: (
     padding: 0;
     min-height: 0;
     background-color: black(.2);
+  }
+  &.msg-layout {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    .container {
+      max-width: 360px;
+    }
+    svg {
+      display: block;
+      margin: 0 auto 24px;
+    }
+    strong {
+      display: block;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .submit {
+      max-width: 240px;
+      margin: 0 auto;
+    }
   }
 }
 
@@ -506,6 +536,84 @@ $media-expressions: (
   gap: 12px;
   margin: 0 auto;
   grid-template-columns: repeat(1, 1fr);
+  &.content-style {
+    max-width: 100%;
+    color: #181F22;
+    .accordion-exp {margin-top: 0;}
+    .accordion-holder {
+      padding-top: 0;
+      & > p {
+        &:last-child {margin: 0;}
+        a {
+          color: black;
+          border-bottom: 1px solid;
+          &:hover {
+            color: $main;
+          }
+        }
+      }
+    }
+    ul:not([class]) {
+      @extend %listreset;
+      padding: 0 0 24px 24px;
+      li {
+        position: relative;
+        padding-left: 24px;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 11px;
+          left: 0;
+          height: 2px;
+          width: 12px;
+          background-color: $main;
+        }
+      }
+      a {
+        color: black;
+        border-bottom: 1px solid;
+        &:hover {
+          color: $main;
+        }
+      }
+    }
+    .display .accordion-exp {
+      max-height: 2000px;
+    }
+  }
+  &.number-type {
+    counter-reset: head-counter;
+    .accordion-item:not(.default) {
+      counter-increment: head-counter;
+      .accordion-header {
+        padding-left: 84px;
+        &::before {
+          content: counter(head-counter) ". ";
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          text-align: center;
+          top: 44px;
+          left: 48px;
+        }
+      }
+      .accordion-holder {
+        counter-reset: counter;
+        & > p:not(.default)::before {
+          counter-increment: counter;
+          content: counters(head-counter, ".") "." counters(counter, ".") ". ";
+        }
+        .inside {
+          counter-reset: inside;
+          & > p:not(.default)::before {
+            counter-increment: inside;
+            content: counters(head-counter, ".") "." counters(counter, ".") "." counters(inside, ".") ". ";
+          }
+        }
+      }
+    }
+  }
 }
 
 .accordion-item {

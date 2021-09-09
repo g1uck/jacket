@@ -403,7 +403,7 @@ th {
   src: url("../webFonts/RoganSemiBold/font.woff2") format("woff2"), url("../webFonts/RoganSemiBold/font.woff") format("woff");
   font-weight: 600; }
 
-#menu ul, .tabs {
+#menu ul, .tabs, #accordion.content-style ul:not([class]) {
   margin: 0;
   padding: 0;
   list-style: none; }
@@ -459,9 +459,9 @@ body {
   overflow-y: scroll; }
   body.home-layout {
     background: #181F22 url(../images/background.webp) no-repeat 50% 0/100% auto; }
-  @media (max-width: 1216px) {
-    body {
-      min-width: 360px; } }
+  .mobile body.home-layout {
+    background-position: 0 0;
+    background-size: 1200px auto; }
 
 img {
   max-width: 100%;
@@ -1070,6 +1070,10 @@ form.success .msg-success {
   padding: 0 var(--indent);
   position: relative;
   margin: 0 auto; }
+  .container > h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: var(--indent); }
 
 .align-right,
 .align-left {
@@ -1197,6 +1201,26 @@ form.success .msg-success {
     padding: 0;
     min-height: 0;
     background-color: rgba(0, 0, 0, 0.2); }
+  #main.msg-layout {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center; }
+    #main.msg-layout .container {
+      max-width: 360px; }
+    #main.msg-layout svg {
+      display: block;
+      margin: 0 auto 24px; }
+    #main.msg-layout strong {
+      display: block;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center; }
+    #main.msg-layout .submit {
+      max-width: 240px;
+      margin: 0 auto; }
 
 #footer {
   width: 100%;
@@ -1480,6 +1504,65 @@ form.success .msg-success {
   gap: 12px;
   margin: 0 auto;
   grid-template-columns: repeat(1, 1fr); }
+  #accordion.content-style {
+    max-width: 100%;
+    color: #181F22; }
+    #accordion.content-style .accordion-exp {
+      margin-top: 0; }
+    #accordion.content-style .accordion-holder {
+      padding-top: 0; }
+      #accordion.content-style .accordion-holder > p:last-child {
+        margin: 0; }
+      #accordion.content-style .accordion-holder > p a {
+        color: black;
+        border-bottom: 1px solid; }
+        #accordion.content-style .accordion-holder > p a:hover {
+          color: #00D1FF; }
+    #accordion.content-style ul:not([class]) {
+      padding: 0 0 24px 24px; }
+      #accordion.content-style ul:not([class]) li {
+        position: relative;
+        padding-left: 24px; }
+        #accordion.content-style ul:not([class]) li::before {
+          content: '';
+          position: absolute;
+          top: 11px;
+          left: 0;
+          height: 2px;
+          width: 12px;
+          background-color: #00D1FF; }
+      #accordion.content-style ul:not([class]) a {
+        color: black;
+        border-bottom: 1px solid; }
+        #accordion.content-style ul:not([class]) a:hover {
+          color: #00D1FF; }
+    #accordion.content-style .display .accordion-exp {
+      max-height: 2000px; }
+  #accordion.number-type {
+    counter-reset: head-counter; }
+    #accordion.number-type .accordion-item:not(.default) {
+      counter-increment: head-counter; }
+      #accordion.number-type .accordion-item:not(.default) .accordion-header {
+        padding-left: 84px; }
+        #accordion.number-type .accordion-item:not(.default) .accordion-header::before {
+          content: counter(head-counter) ". ";
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          text-align: center;
+          top: 44px;
+          left: 48px; }
+      #accordion.number-type .accordion-item:not(.default) .accordion-holder {
+        counter-reset: counter; }
+        #accordion.number-type .accordion-item:not(.default) .accordion-holder > p:not(.default)::before {
+          counter-increment: counter;
+          content: counters(head-counter, ".") "." counters(counter, ".") ". "; }
+        #accordion.number-type .accordion-item:not(.default) .accordion-holder .inside {
+          counter-reset: inside; }
+          #accordion.number-type .accordion-item:not(.default) .accordion-holder .inside > p:not(.default)::before {
+            counter-increment: inside;
+            content: counters(head-counter, ".") "." counters(counter, ".") "." counters(inside, ".") ". "; }
 
 .accordion-item {
   overflow: hidden;
