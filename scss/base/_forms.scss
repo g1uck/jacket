@@ -12,17 +12,20 @@ input::-ms-clear {
   width: 0;
   height: 0;
 }
+
 input::-ms-reveal {
   display: none;
   width: 0;
   height: 0;
 }
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
+
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #eee inset;
 }
@@ -78,8 +81,8 @@ textarea {
     color: $placeholder-color;
   }
 
-  &[data-note] ~ label span,
-  &[data-note] ~ .placeholder span {
+  &[data-note]~label span,
+  &[data-note]~.placeholder span {
     color: $main;
   }
 }
@@ -123,6 +126,7 @@ input[type="submit"] {
   line-height: 20px;
   transition-property: background-color;
   background: black(.4) url(../images/burger.svg) no-repeat 20px 50% / 13px 13px;
+
   &::before {
     content: '';
     position: absolute;
@@ -132,6 +136,7 @@ input[type="submit"] {
     height: 1px;
     background-color: white(.3);
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -145,18 +150,27 @@ input[type="submit"] {
     border: 2px solid $main;
     box-shadow: 0px 0px 5px $main;
   }
-  &:hover {background-color: black;}
+
+  &:hover {
+    background-color: black;
+  }
+
   &[data-right] {
     padding: 0 72px 0 20px;
     background-position: calc(100% - 20px) 50%;
+
     &::before {
       left: auto;
       right: 43px;
     }
   }
+
   &.active {
     background-color: black;
-    &::after {opacity: 1;}
+
+    &::after {
+      opacity: 1;
+    }
   }
 }
 
@@ -195,11 +209,18 @@ input[type="submit"] {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+
   strong {
     display: block;
   }
-  svg {display: block;}
-  &:hover {color: white;}
+
+  svg {
+    display: block;
+  }
+
+  &:hover {
+    color: white;
+  }
 }
 
 .input {
@@ -226,6 +247,7 @@ input[type="submit"] {
   textarea {
     position: relative;
     z-index: 10;
+
     &::placeholder {
       color: transparent;
     }
@@ -235,21 +257,29 @@ input[type="submit"] {
         transform: translate3d(-18px, -39px, 0) scale3d(0.75, 0.75, 1);
       }
     }
-    
+
     &:focus+label {
 
-      &::before {background-color: white;}
-      &::after {opacity: 1;}
+      &::before {
+        background-color: white;
+      }
+
+      &::after {
+        opacity: 1;
+      }
 
       span {
         transform: translate3d(-18px, -39px, 0) scale3d(0.75, 0.75, 1);
       }
     }
 
-    &.error,
-    &:invalid:not(:valid):not(:placeholder-shown) {
+    .errorVisible &.error {
+    // &:invalid:not(:valid):not(:placeholder-shown) {
       &+label {
-        &::before {background-color: white;}
+        &::before {
+          background-color: white;
+        }
+
         &::after {
           opacity: 1;
           border-color: $red;
@@ -257,8 +287,13 @@ input[type="submit"] {
         }
       }
 
-      & ~.error {opacity: 1;}
-      & ~ .characters {opacity: 0;}
+      &~.error {
+        opacity: 1;
+      }
+
+      &~.characters {
+        opacity: 0;
+      }
     }
 
     &:disabled:not(:placeholder-shown)+label {
@@ -273,7 +308,8 @@ input[type="submit"] {
     @extend %fullscreen;
     pointer-events: none;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       content: '';
       @extend %fullscreen;
       border-radius: 6px;
@@ -282,7 +318,9 @@ input[type="submit"] {
       transition-property: opacity, background-color, border-color, box-shadow;
     }
 
-    &::before {background-color: #eee;}
+    &::before {
+      background-color: #eee;
+    }
 
     &::after {
       opacity: 0;
@@ -328,7 +366,7 @@ input[type="submit"] {
     transition: opacity $animation-speed ease;
   }
 
-  & > svg {
+  &>svg {
     position: absolute;
     z-index: 15;
     top: 50%;
@@ -347,14 +385,24 @@ input[type="submit"] {
     width: 24px;
     height: 24px;
     cursor: pointer;
+
     svg {
       display: block;
       width: 100%;
       height: 100%;
-      path {transition: fill $animation-speed ease;}
+
+      path {
+        transition: fill $animation-speed ease;
+      }
     }
-    &:hover svg path {fill: black;}
-    &.selected svg path {fill: $main;}
+
+    &:hover svg path {
+      fill: black;
+    }
+
+    &.selected svg path {
+      fill: $main;
+    }
   }
 }
 
@@ -372,29 +420,38 @@ input[type="submit"] {
   font-size: 14px;
   line-height: 24px;
   position: relative;
+
   input {
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
     visibility: hidden;
-    &:checked + span {
+
+    &:checked+span {
       color: #181F22;
-      &::after {opacity: 1;}
+
+      &::after {
+        opacity: 1;
+      }
     }
-    &.error + span::after {
+
+    &.error+span::after {
       opacity: 1;
       border-color: $red;
       box-shadow: 0px 0px 5px $red;
     }
   }
+
   span {
     display: block;
     color: #828282;
     position: relative;
     padding-left: 36px;
     transition: color $animation-speed ease;
-    &::before, &::after {
+
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       top: 0;
@@ -405,7 +462,11 @@ input[type="submit"] {
       cursor: pointer;
       transition: opacity $animation-speed ease;
     }
-    &::before {background-color: #eee;}
+
+    &::before {
+      background-color: #eee;
+    }
+
     &::after {
       opacity: 0;
       background-color: white;
@@ -413,6 +474,7 @@ input[type="submit"] {
       box-shadow: 0px 0px 5px $main;
     }
   }
+
   a {
     color: #181F22;
     border-bottom: 1px solid;
@@ -434,6 +496,7 @@ input[type="submit"] {
   opacity: 0;
   pointer-events: none;
   transition: opacity $animation-speed ease;
+
   .middle {
     width: 100%;
     text-align: center;
@@ -442,10 +505,12 @@ input[type="submit"] {
     padding-bottom: 96px;
     color: $gray;
   }
+
   svg {
     display: block;
     margin: 0 auto 24px;
   }
+
   .title {
     display: block;
     font-size: 20px;
@@ -455,10 +520,206 @@ input[type="submit"] {
     margin-bottom: 24px;
     text-transform: capitalize;
   }
-  p {margin: 0;}
+
+  p {
+    margin: 0;
+  }
 }
 
 form.success .msg-success {
   opacity: 1;
   pointer-events: all;
+}
+
+.subscribe {
+  width: 100%;
+  position: relative;
+  height: 240px;
+  padding: var(--indent);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+
+  .middle {
+    width: 100%;
+    max-width: 528px;
+    margin: 0 auto;
+    padding: var(--indent) 0;
+  }
+
+  .input {
+    margin: 0;
+
+    input,
+    textarea {
+      color: white;
+      transition: opacity $animation-speed ease;
+
+      &::-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px black inset;
+      }
+
+      @include placeholder {
+        color: white(.5);
+      }
+
+      &:focus {
+        @include placeholder {
+          color: transparent;
+        }
+
+        &+label {
+          &::before {
+            background-color: black;
+          }
+        }
+      }
+
+      &:placeholder-shown ~ button {
+        pointer-events: none;
+      }
+
+      &.error,
+      &:invalid:not(:valid):not(:placeholder-shown) {
+        &+label {
+          &::before {
+            background-color: black;
+          }
+        }
+      }
+    }
+
+    label {
+      &::before {
+        background-color: black(.5);
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    margin: 0;
+    border: 0;
+    z-index: 30;
+    background: none;
+    svg {
+      display: block;
+    }
+  }
+
+  header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(var(--indent) * -1);
+    strong {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 24px;
+      opacity: 0;
+      letter-spacing: 0.02em;
+      text-transform: capitalize;
+      transition: opcity $animation-speed ease;
+      &:nth-child(1) {opacity: 1;}
+      &:nth-child(2) {color: $red;}
+    }
+  }
+
+  footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: white(.6);
+    text-align: center;
+    min-height: 24px;
+    bottom: calc(var(--indent) * -1);
+    p {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      opacity: 0;
+      transition: opcity $animation-speed ease;
+      &:nth-child(1) {opacity: 1;}
+    }
+  }
+
+  .clone {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px 18px;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: $animation-speed ease;
+    transition-property: left, transform, opacity;
+  }
+
+  .backEnter {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 100%;
+    padding: 12px;
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: $animation-speed ease;
+    transition-property: left, transform, opacity;
+    svg {
+      display: block;
+      transform: rotate(-180deg);
+      path {fill: $red;}
+    }
+  }
+
+  &.errorVisible {
+    .input {
+      input,
+      button {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .clone {
+        left: 100%;
+        opacity: 1;
+        transform: translateX(-100%);
+      }
+      .backEnter {
+        left: 0;
+        opacity: 1;
+        transform: none;
+        pointer-events: all;
+      }
+      header strong {
+        opacity: 0;
+        &:nth-child(2) {opacity: 1;}
+      }
+      footer p {
+        opacity: 0;
+        &:nth-child(2) {opacity: 1;}
+      }
+    }
+  }
+
+  .subscribe-layout & {
+    background-color: black(.3);
+  }
 }

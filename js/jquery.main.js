@@ -25,10 +25,16 @@ document.documentElement.style.setProperty("--vh", `${vh}px`)
 
 window.addEventListener("scroll", function () {
   panelScroll()
+  initParallax()
+  initScrolling()
+  initViewportElems()
 })
 
 window.addEventListener("load", function () {
   panelScroll()
+  initParallax()
+  initScrolling()
+  initViewportElems()
   tippy('[data-tippy-content]')
 })
 
@@ -52,6 +58,7 @@ function panelScroll() {
 
 let invalidClassName = 'error'
 let inputs = document.querySelectorAll('input, select, textarea')
+
 inputs.forEach(function (input) {
   // Add a css class on submit when the input is invalid.
   input.addEventListener('invalid', function (e) {
@@ -67,20 +74,35 @@ inputs.forEach(function (input) {
     let passConf = document.getElementById("confirm-password")
     let errorMessage = input.parentNode.querySelector('span.error')
 
-    if (input.value.length === 0) {
+    if (input.value.length === 0 && errorMessage) {
       errorMessage.innerHTML = 'This field is required'
-    } else if (input.getAttribute('type') === "password") {
+    } else if (input.classList.contains('password-type') && errorMessage) {
       if (input.value.length < 8 || input.value.length > 16) errorMessage.innerHTML = 'Passwords are 8-16 characters'
       else errorMessage.innerHTML = 'Uppercase letters, lowercase letters, special symbol and at least one number.'
     }
 
-    if (input === passConf && passDef.value != passConf.value) {
+    if (input === passConf && passDef.value != passConf.value && errorMessage) {
       input.classList.add(invalidClassName)
       errorMessage.innerHTML = 'Passwords do not match'
     } else if (input.validity.valid) {
       input.classList.remove(invalidClassName)
     }
   })
+})
+
+// Subscribe Form
+
+let subscribe = document.getElementById('subscribe')
+let backEnter = document.querySelector('.backEnter')
+
+subscribe.addEventListener('keyup', function (e) {
+  let clone = subscribe.parentNode.querySelector('.clone')
+  clone.innerHTML = subscribe.value
+})
+
+backEnter.addEventListener('click', function (e) {
+  e.preventDefault()
+  backEnter.closest("form").classList.remove('errorVisible')
 })
 
 // Toggle Password Visible
@@ -90,9 +112,9 @@ let togglePassword = document.querySelectorAll('.toggle-password')
 togglePassword.forEach(function (toggle) {
   toggle.addEventListener('click', function (event) {
     toggle.classList.toggle('selected')
-  
+
     let inputElem = toggle.parentNode.querySelectorAll('input')[0]
-  
+
     toggle.classList.contains('selected') ?
       inputElem.setAttribute('type', 'text') :
       inputElem.setAttribute('type', 'password')
@@ -104,6 +126,11 @@ togglePassword.forEach(function (toggle) {
 let forms = document.querySelectorAll('form')
 
 forms.forEach(function (form) {
+  let button = form.querySelector('button[type="submit"]')
+  button.addEventListener('click', function () {
+    form.classList.add('errorVisible')
+  })
+
   form.onsubmit = async (e) => {
     e.preventDefault()
 
@@ -116,6 +143,8 @@ forms.forEach(function (form) {
     })
 
     let result = await response.json()
+
+    console.log(result)
 
     if (result.redirect) window.location.href = result.redirect
 
@@ -235,3 +264,38 @@ let createSnackbar = (function () {
     snackbar.style.opacity = 1
   }
 })()
+
+// Parallax
+
+let parallaxImg = document.querySelectorAll('.parallax-bg > *')
+
+function initParallax() {
+  let i = 3
+  parallaxImg.forEach(function (img, index) {
+    img.style.transform = "translateY(" + window.scrollY / i + "px)"
+    if (index < 3) i++
+  })
+}
+
+function initScrolling() {
+  let body = document.querySelector("body")
+  window.scrollY > 72 ? body.classList.add('scrolling') : body.classList.remove('scrolling')
+}
+
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  )
+}
+
+let viewportElems = document.querySelectorAll('.point-desc')
+
+function initViewportElems() {
+  viewportElems.forEach(function (box) {
+    if (isInViewport(box)) box.classList.add('display')
+  })
+}

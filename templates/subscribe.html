@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<!-- build:section layout.head -->
+<!-- /build -->
+
+<body class="subscribe-layout">
+	<style>
+		@media (max-width: 1216px) {
+    	body.subscribe-layout {
+				height: 100%;
+				min-width: 414px;
+				background-size: cover;
+			}
+			.container {padding: 0 12px;}
+			.subscribe {
+				padding: 36px 24px;
+				height: auto;
+			}
+		}
+	</style>
+	<div id="svg-icon-placeholder" style="display: none;"></div>
+	<div id="wrapper">
+		<header id="header">
+			<strong class="logo"><a href="/">JAXET</a></strong>
+		</header>
+		<main id="main">
+			<div class="container">
+				<form method="POST" action="#" class="subscribe">
+					<div class="middle">
+						<div class="input">
+							<input id="subscribe" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="email" placeholder="Enter Your email" required>
+							<label><span></span></label>
+							<button type="submit"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="#00D1FF" /></svg></button>
+							<span class="clone"></span>
+							<a href="#" class="backEnter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="#00D1FF" /></svg></a>
+							<header>
+								<strong>Subscribe to our newsletter!</strong>
+								<strong>Error!</strong>
+							</header>
+							<footer>
+								<p>to be the first to meet Jaxet!</p>
+								<p>Please enter a valid email address.</p>
+							</footer>
+							<input type="hidden" name="sender" value="hello@jaxet.com">
+						</div>
+					</div>
+				</form>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>

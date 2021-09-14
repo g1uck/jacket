@@ -18,6 +18,7 @@ html {
 body {
   letter-spacing: .02em;
   color: $base-text-color;
+  overscroll-behavior-y: none;
   background: $base-background-color;
   font: #{$font-size-base}/#{$line-height-base} $base-font-family;
   min-width: $base-min-width;
@@ -25,9 +26,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   overflow-y: scroll;
-  &.home-layout {
-    background: $base-background-color url(../images/background.webp) no-repeat 50% 0 / 100% auto;
+  &.subscribe-layout {
+    background: $base-background-color url(../images/bg.webp) no-repeat 50% 0 / 100% auto;
   }
+  // &.home-layout {
+  //   background: $base-background-color url(../images/Stone2.webp) no-repeat 50% 0 / 100% auto;
+  // }
   .mobile &.home-layout {
     background-position: 0 0;
     background-size: 1200px auto;

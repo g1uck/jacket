@@ -76,7 +76,7 @@
 						<div class="accordion-exp">
 							<form class="accordion-holder" action="_inc/form.php" method="post">
 								<div class="input">
-									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="current_password" placeholder="Current Password" required>
+									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="current_password" class="password-type" placeholder="Current Password" required>
 									<label><span>Current Password</span></label>
 									<span class="error">This field is required</span>
 									<span class="toggle-password">
@@ -88,7 +88,7 @@
 									</span>
 								</div>
 								<div class="input">
-									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" placeholder="New Password" id="password" required>
+									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" placeholder="New Password" class="password-type" id="password" required>
 									<label><span>New Password</span></label>
 									<span class="error">This field is required</span>
 									<span class="toggle-password">
@@ -100,7 +100,7 @@
 									</span>
 								</div>
 								<div class="input">
-									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" placeholder="Confirm New Password" id="confirm-password" required>
+									<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" class="password-type" placeholder="Confirm New Password" id="confirm-password" required>
 									<label><span>Confirm New Password</span></label>
 									<span class="error">This field is required</span>
 									<span class="toggle-password">

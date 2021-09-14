@@ -89,7 +89,7 @@
                         <div class="accordion-exp">
                             <form class="accordion-holder" action="_inc/form.php" method="post">
                                 <div class="input">
-                                    <input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="current_password" placeholder="Current Password" required>
+                                    <input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="current_password" class="password-type" placeholder="Current Password" required>
                                     <label><span>Current Password</span></label>
                                     <span class="error">This field is required</span>
                                     <span class="toggle-password">
@@ -99,7 +99,7 @@
                                     </span>
                                 </div>
                                 <div class="input">
-                                    <input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" placeholder="New Password" id="password" required>
+                                    <input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" placeholder="New Password" class="password-type" id="password" required>
                                     <label><span>New Password</span></label>
                                     <span class="error">This field is required</span>
                                     <span class="toggle-password">
@@ -109,7 +109,7 @@
                                     </span>
                                 </div>
                                 <div class="input">
-                                    <input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" placeholder="Confirm New Password" id="confirm-password" required>
+                                    <input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" class="password-type" placeholder="Confirm New Password" id="confirm-password" required>
                                     <label><span>Confirm New Password</span></label>
                                     <span class="error">This field is required</span>
                                     <span class="toggle-password">
@@ -161,6 +161,7 @@
             }, false);
         </script>
         <!-- Development -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.3.6/mobile-detect.min.js"></script>
         <script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
         <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
