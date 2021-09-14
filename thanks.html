@@ -21,18 +21,23 @@
 </head>
 
 <body>
+    <style>
+        @media (max-width: 1216px) {
+            body {
+                height: 100% !important;
+                min-width: 414px !important;
+            }
+        }
+
+        #main {
+            padding: 0;
+            height: 100vh;
+        }
+    </style>
     <div id="svg-icon-placeholder" style="display: none;"></div>
     <div id="wrapper">
         <header id="header">
             <strong class="logo"><a href="#">JAXET</a></strong>
-            <div class="align-left">
-                <a href="#" class="icon-button">catalog</a>
-                <div class="gender">
-                    <a class="selected" href="#"><img src="images/male.svg" alt=""></a>
-                    <a data-tippy-content="coming soon" data-tippy-arrow="false" data-tippy-placement="bottom"><img src="images/female.svg" alt=""></a>
-                </div>
-            </div>
-            <a data-right href="#" class="icon-button">My account</a>
         </header>
         <main id="main" class="msg-layout">
             <div class="container">
@@ -44,43 +49,6 @@
                 <a href="/" class="submit">to home page</a>
             </div>
         </main>
-        <footer id="footer">
-            <div class="container">
-                <strong class="logo"><a href="/">JAXET</a></strong>
-                <nav id="menu">
-                    <ul>
-                        <li><a href="shipping.html">SHIPPING & RETURNS</a></li>
-                        <li><a href="legal.html">LEGAL AREA</a></li>
-                        <li><a href="policy.html">PRIVACY POLICY</a></li>
-                    </ul>
-                </nav>
-                <div class="align-right">
-                    <em class="copyright">Copyright JAXET / Taryan Group 2021</em>
-                    <div class="social">
-                        <a href="#"><img src="images/youtube.svg" alt=""></a>
-                        <a href="#"><img src="images/instagram.svg" alt=""></a>
-                        <a href="#"><img src="images/xml.svg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
-
-        <script type="text/javascript" src="js/svg-sprites.js" defer></script>
-        <script type="text/javascript" defer>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('svg-icon-placeholder').innerHTML += SVG_SPRITES['sprite'];
-            }, false);
-        </script>
-        <!-- Development -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.3.6/mobile-detect.min.js"></script>
-        <script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
-        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-        <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-
-        <script src="js/jquery.main.js" defer></script>
     </div>
 </body>
 

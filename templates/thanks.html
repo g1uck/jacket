@@ -4,18 +4,22 @@
 <!-- /build -->
 
 <body>
+	<style>
+		@media (max-width: 1216px) {
+    	body {
+				height: 100% !important;
+				min-width: 414px !important;
+			}
+		}
+		#main {
+			padding: 0;
+			height: 100vh;
+		}
+	</style>
 	<div id="svg-icon-placeholder" style="display: none;"></div>
 	<div id="wrapper">
 		<header id="header">
 			<strong class="logo"><a href="#">JAXET</a></strong>
-			<div class="align-left">
-				<a href="#" class="icon-button">catalog</a>
-				<div class="gender">
-					<a class="selected" href="#"><img src="images/male.svg" alt=""></a>
-					<a data-tippy-content="coming soon" data-tippy-arrow="false" data-tippy-placement="bottom"><img src="images/female.svg" alt=""></a>
-				</div>
-			</div>
-			<a data-right href="#" class="icon-button">My account</a>
 		</header>
 		<main id="main" class="msg-layout">
 			<div class="container">
@@ -31,8 +35,6 @@
 				<a href="/" class="submit">to home page</a>
 			</div>
 		</main>
-		<!-- build:section layout.footer -->
-		<!-- /build -->
 	</div>
 </body>
 
