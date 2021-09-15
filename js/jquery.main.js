@@ -142,6 +142,8 @@ forms.forEach(function (form) {
   form.onsubmit = async (e) => {
     e.preventDefault()
 
+    form.classList.remove('errorVisible')
+
     let link = form.getAttribute('action')
     let method = form.getAttribute('method')
 
