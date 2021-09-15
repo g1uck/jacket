@@ -27,6 +27,7 @@ window.addEventListener("scroll", function () {
   panelScroll()
   initParallax()
   initScrolling()
+  initLogoChange()
   initViewportElems()
 })
 
@@ -36,6 +37,17 @@ window.addEventListener("load", function () {
   initScrolling()
   initViewportElems()
   tippy('[data-tippy-content]')
+
+  let app = document.getElementById('welcom')
+
+  let typewriter = new Typewriter(app, {
+    loop: false,
+    delay: 50,
+  })
+
+  typewriter
+    .typeString('<span>Rethinking the form.</span> The form is partly reflecting the times and the circumstances we live in. Getting a new form to existing things means keeping up with the changes around us. We feel the time, therefore have translated a <span>new aesthetics</span> into our brand DNA.')
+    .start()
 })
 
 window.addEventListener("resize", function () {
@@ -282,6 +294,9 @@ let parallaxImg = document.querySelectorAll('.parallax-bg > *')
 function initParallax() {
   let i = 3
   parallaxImg.forEach(function (img, index) {
+    if (index === 2) return false
+    if (index > 2) i = 12
+    console.log('i', i)
     img.style.transform = "translateY(" + window.scrollY / i + "px)"
     if (index < 3) i++
   })
@@ -308,4 +323,11 @@ function initViewportElems() {
   viewportElems.forEach(function (box) {
     if (isInViewport(box)) box.classList.add('display')
   })
+}
+
+let logoH = document.querySelector('#header .logo')
+let logoF = document.querySelector('#footer .logo')
+
+function initLogoChange() {
+  isInViewport(logoF) ? logoH.classList.add('hidden') : logoH.classList.remove('hidden')
 }

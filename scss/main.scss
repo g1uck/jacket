@@ -91,10 +91,16 @@ $media-expressions: (
   font-size: 0;
   line-height: 0;
   transform: translate(-50%, -50%);
+  transition: $animation-speed ease;
+  transition-property: opacity, transform;
   background: url(../images/logo.svg) no-repeat 50% 50% / contain;
   a {
     display: block;
     height: 100%;
+  }
+  &.hidden {
+    opacity: 0;
+    transform: translate(-50%, -100%);
   }
 }
 
@@ -187,23 +193,38 @@ $media-expressions: (
   &::before {
     content: '';
     display: block;
-    padding-top: 29.86111111111111%;
+    padding-top: 15.277777777777779%;
   }
   .middle {
     @extend %fullscreen;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 4.652777777777778%;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    padding: 0 var(--indent)  4.652777777777778%;
+    margin: 0 auto;
+  }
+  strong,
+  .back {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    span:not([class]) {
+      font-family: $ibm;
+      font-weight: 400;
+    }
   }
   strong {
-    font-weight: 600;
-    font-size: 49px;
-    line-height: 48px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    text-shadow: 0px 0px 5px black(.6);
+    position: absolute;
+    left: var(--indent);
+    right: var(--indent);
+    top: 0;
   }
+  .back {opacity: 0;}
   .scrolling & {opacity: 0;}
 }
 
@@ -215,7 +236,6 @@ $media-expressions: (
   cursor: default;
   margin-top: 2.7777777777777777%;
   transform: translateX(-50%);
-  animation: pulse 2s infinite;
   span {
     text-align: center;
     letter-spacing: 0.5em;
@@ -232,6 +252,7 @@ $media-expressions: (
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    animation: pulse 2s infinite;
   }
 }
 
@@ -259,6 +280,7 @@ $media-expressions: (
       .point {transform: scale(1);}
       .desc {
         opacity: 1;
+        transform: none;
         transition-delay: $animation-speed * 1.5;
       }
     }
@@ -273,7 +295,9 @@ $media-expressions: (
   }
   .desc {
     opacity: 0;
-    transition: opacity $animation-speed * 1.5 ease;
+    transform: translateY(24px);
+    transition: $animation-speed * 1.5 ease;
+    transition-property: opacity, transform;
   }
   strong {
     display: block;
@@ -286,15 +310,15 @@ $media-expressions: (
 
 @keyframes pulse {
   0% {
-    transform: translate(0, 0);
+    transform: translate(-50%, 0);
   }
 
   50% {
-    transform: translate(0, 10px);
+    transform: translate(-50%, 10px);
   }
 
   100% {
-    transform: translate(0, 0);
+    transform: translate(-50%, 0);
   }
 }
 
@@ -328,7 +352,8 @@ $media-expressions: (
       left: 0;
       top: -30px;
       color: white(.5);
-      font: italic 14px/20px $ibm;
+      font-size: 14px;
+      line-height: 20px;
     }
     .title {
       display: block;
@@ -382,7 +407,8 @@ $media-expressions: (
       text-transform: capitalize;
     }
     span {
-      font: italic 16px/20px $ibm;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 }
@@ -397,17 +423,17 @@ $media-expressions: (
   width: 100%;
   position: relative;
   padding-top: 144px;
-  min-height: calc(100vh - 144px);
+  min-height: calc(100vh - 240px);
   .home-layout & {
     padding: 0;
     min-height: 0;
     &::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -144px;
       left: 0;
       right: 0;
-      bottom: -144px;
+      bottom: -288px;
       background: url(../images/stone_footer.webp)  no-repeat 50% 0 / 100% auto;
     }
     &::after {
@@ -458,12 +484,13 @@ $media-expressions: (
   width: 100%;
   font-size: 14px;
   position: relative;
-  padding: calc(var(--indent) + 6px) 0;
   .home-layout & {background-color: black(.2);}
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: calc(var(--indent) * 2 + 4px);
+    padding-bottom: calc(var(--indent) * 2 + 4px) ;
   }
   .logo {background-image: url(../images/footer_logo.svg);}
   .align-right {align-items: center;}
@@ -604,9 +631,16 @@ $media-expressions: (
 }
 
 #menu {
+  position: absolute;
+  top: var(--indent);
+  left: 0;
+  width: 100%;
   font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ul {
     @extend %listreset;
     display: flex;
@@ -626,6 +660,20 @@ $media-expressions: (
     &:hover {color: $main;}
   }
   .active a {color: $main;}
+}
+
+.pay-icon {
+  display: block;
+  padding: 4px 0;
+  img {display: block;}
+}
+
+.short-contatcs {
+  @extend #menu;
+  top: auto;
+  bottom: var(--indent);
+  text-transform: none;
+  letter-spacing: 0.02em;
 }
 
 .copyright {
