@@ -190,7 +190,10 @@ input[type="submit"] {
   height: 48px;
   border-radius: 24px;
   background: $main;
-  box-shadow: 0px 4px 6px rgba($main, 0.3);
+  transition: box-shadow $animation-speed ease;
+  &:hover {
+    box-shadow: 0px 4px 6px rgba($main, 0.3);
+  }
 }
 
 .large-button {
@@ -749,7 +752,8 @@ form.success .msg-success {
       text-transform: capitalize;
     }
     span {
-      font: italic 16px/20px $ibm;
+      font-size: 14px;
+      line-height: 24px;
     }
   }
 

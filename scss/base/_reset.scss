@@ -26,19 +26,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   overflow-y: scroll;
+  &.has-scrollbar {
+    scrollbar-face-color: $main;
+    scrollbar-track-color: transparent;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 18px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-track:hover {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $main;
+      border-radius: 18px;
+      min-height: 36px;
+      border: 6px solid #181F22;
+    }
+  }
   &.subscribe-layout {
     background: $base-background-color url(../images/bg.webp) no-repeat 50% 0 / 100% auto;
   }
-  // &.home-layout {
-  //   background: $base-background-color url(../images/Stone2.webp) no-repeat 50% 0 / 100% auto;
-  // }
   .mobile &.home-layout {
     background-position: 0 0;
     background-size: 1200px auto;
   }
-  // @include media('<desktop') {
-  //   min-width: 360px;
-  // }
 }
 
 // adaptive images

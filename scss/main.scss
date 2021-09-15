@@ -575,6 +575,8 @@ $media-expressions: (
     align-items: center;
     justify-content: center;
     padding-left: 2px;
+    transition: color $animation-speed ease;
+    transition: box-shadow $animation-speed ease;
     svg {display: block;}
   }
   .preview {
@@ -595,6 +597,9 @@ $media-expressions: (
       line-height: 24px;
       font-weight: 600;
     }
+  }
+  &:hover .play-icon {
+    box-shadow: 0px 4px 6px rgba($main, 0.3);
   }
 }
 
