@@ -8,13 +8,26 @@
 		@media (max-width: 1216px) {
     	body.subscribe-layout {
 				height: 100%;
-				min-width: 414px;
+				min-width: 375px;
 				background-size: cover;
 			}
 			.container {padding: 0 12px;}
 			.subscribe {
 				padding: 36px 24px;
 				height: auto;
+				margin-bottom: 96px;
+			}
+			.subscribe .middle {
+				padding-top: 72px;
+			}
+			.subscribe header {
+				top: calc(-100% - 24px);
+			}
+			.subscribe .label {
+				top: calc(100% - 18px);
+				right: auto;
+				left: 50%;
+				transform: translateX(-50%);
 			}
 		}
 	</style>
@@ -25,7 +38,11 @@
 		</header>
 		<main id="main">
 			<div class="container">
-				<form method="POST" action="#" class="subscribe">
+				<form method="POST" action="http://landing.praid.com.ua/subscribe" class="subscribe">
+					<div class="label">
+						<strong>0</strong>
+						<span>days left</span>
+					</div>
 					<div class="middle">
 						<div class="input">
 							<input id="subscribe" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="email" placeholder="Enter Your email" required>
@@ -34,7 +51,7 @@
 							<span class="clone"></span>
 							<a href="#" class="backEnter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="#00D1FF" /></svg></a>
 							<header>
-								<strong>Subscribe to our newsletter!</strong>
+								<strong>Are You ready to transform Your reality soon?</strong>
 								<strong>Error!</strong>
 							</header>
 							<footer>
@@ -48,6 +65,23 @@
 			</div>
 		</main>
 	</div>
+
+	<link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
+
+	<script type="text/javascript" src="js/svg-sprites.js" defer></script>
+	<script type="text/javascript" defer>
+		document.addEventListener('DOMContentLoaded', function () {
+			document.getElementById('svg-icon-placeholder').innerHTML += SVG_SPRITES['sprite'];
+		}, false);
+	</script>
+	<!-- Development -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.3.6/mobile-detect.min.js"></script>
+	<script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
+	<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+	<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+	<script src="js/jquery.main.js" defer></script>
 </body>
 
 </html>

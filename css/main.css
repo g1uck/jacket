@@ -1222,6 +1222,35 @@ form.success .msg-success {
     opacity: 0; }
     .subscribe.errorVisible .input footer p:nth-child(2) {
       opacity: 1; }
+  .subscribe .label {
+    position: absolute;
+    right: var(--indent);
+    top: 0;
+    width: 144px;
+    height: 144px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%); }
+    .subscribe .label::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 148px;
+      height: 148px;
+      animation: spin 16s linear infinite;
+      background: url(../images/soon.svg) no-repeat 50% 50%;
+      transform: translate(-50%, -50%); }
+    .subscribe .label strong {
+      font-size: 48px;
+      line-height: 48px;
+      font-weight: 600;
+      margin-bottom: -6px;
+      text-transform: capitalize; }
+    .subscribe .label span {
+      font: italic 16px/20px "IBM Plex Serif", serif; }
   .subscribe-layout .subscribe {
     background-color: rgba(0, 0, 0, 0.3); }
 

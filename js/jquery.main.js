@@ -42,6 +42,12 @@ window.addEventListener("resize", function () {
   panelScroll()
 })
 
+// Days Left
+
+const timeBox = document.querySelector('.subscribe .label strong')
+const diffDays = (date, otherDate) => Math.ceil(Math.abs(date - otherDate) / (1000 * 60 * 60 * 24))
+if (timeBox) timeBox.innerHTML = diffDays(new Date(), new Date('2021-09-25'))
+
 // Panel Start/Stop Scrolling
 
 let panel = document.querySelector('.panel')
@@ -95,15 +101,17 @@ inputs.forEach(function (input) {
 let subscribe = document.getElementById('subscribe')
 let backEnter = document.querySelector('.backEnter')
 
-subscribe.addEventListener('keyup', function (e) {
-  let clone = subscribe.parentNode.querySelector('.clone')
-  clone.innerHTML = subscribe.value
-})
-
-backEnter.addEventListener('click', function (e) {
-  e.preventDefault()
-  backEnter.closest("form").classList.remove('errorVisible')
-})
+if (subscribe) {
+  subscribe.addEventListener('keyup', function (e) {
+    let clone = subscribe.parentNode.querySelector('.clone')
+    clone.innerHTML = subscribe.value
+  })
+  
+  backEnter.addEventListener('click', function (e) {
+    e.preventDefault()
+    backEnter.closest("form").classList.remove('errorVisible')
+  })
+}
 
 // Toggle Password Visible
 
