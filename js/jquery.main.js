@@ -29,6 +29,7 @@ window.addEventListener("scroll", function () {
   initScrolling()
   initLogoChange()
   initViewportElems()
+  initSwiperControls()
 })
 
 window.addEventListener("load", function () {
@@ -36,6 +37,7 @@ window.addEventListener("load", function () {
   initParallax()
   initScrolling()
   initViewportElems()
+  initSwiperControls()
   tippy('[data-tippy-content]')
 
   let app = document.getElementById('welcom')
@@ -48,11 +50,40 @@ window.addEventListener("load", function () {
   typewriter
     .typeString('<span>Rethinking the form.</span> The form is partly reflecting the times and the circumstances we live in. Getting a new form to existing things means keeping up with the changes around us. We feel the time, therefore have translated a <span>new aesthetics</span> into our brand DNA.')
     .start()
+
+  var wow = new WOW({
+    boxClass: 'effect', // animated element css class (default is wow)
+    animateClass: 'animated', // animation css class (default is animated)
+    offset: 0, // distance to the element when triggering the animation (default is 0)
+    mobile: false, // trigger animations on mobile devices (default is true)
+    live: true, // act on asynchronously loaded content (default is true)
+    callback: function (box) {
+      // the callback is fired every time an animation is started
+      // the argument that is passed in is the DOM node being animated
+    },
+    scrollContainer: null, // optional scroll container selector, otherwise use window,
+    resetAnimation: true, // reset animation on end (default is true)
+  })
+  wow.init()
+
+  setTimeout(function () {
+    if (getCookie('policy') === undefined) {
+      cookieBox.classList.add('display')
+    }
+  }, 500)
 })
 
 window.addEventListener("resize", function () {
   panelScroll()
 })
+
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual'
+} else {
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0)
+  }
+}
 
 // Days Left
 
@@ -62,14 +93,22 @@ if (timeBox) timeBox.innerHTML = diffDays(new Date(), new Date('2021-09-25'))
 
 // Panel Start/Stop Scrolling
 
+let landing = document.querySelector('.landing-layout')
 let panel = document.querySelector('.panel')
 let promo = document.getElementById('promo')
 
+if (landing) promo = document.querySelector('.product')
+
 function panelScroll() {
   if (!panel) return false
-  window.scrollY + window.innerHeight >= parseFloat(getComputedStyle(promo, null).height.replace("px", "")) ?
-    panel.classList.add('bottom') :
-    panel.classList.remove('bottom')
+  let rect = promo.getBoundingClientRect()
+  if (landing) {
+    window.scrollY + window.screen.height >= window.screen.height + rect.height + 120 ? panel.classList.add('bottom') : panel.classList.remove('bottom')
+  } else {
+    window.scrollY + window.innerHeight >= parseFloat(getComputedStyle(promo, null).height.replace("px", "")) ?
+      panel.classList.add('bottom') :
+      panel.classList.remove('bottom')
+  }
 }
 
 // Validation
@@ -118,7 +157,7 @@ if (subscribe) {
     let clone = subscribe.parentNode.querySelector('.clone')
     clone.innerHTML = subscribe.value
   })
-  
+
   backEnter.addEventListener('click', function (e) {
     e.preventDefault()
     backEnter.closest("form").classList.remove('errorVisible')
@@ -147,9 +186,11 @@ let forms = document.querySelectorAll('form')
 
 forms.forEach(function (form) {
   let button = form.querySelector('button[type="submit"]')
-  button.addEventListener('click', function () {
-    form.classList.add('errorVisible')
-  })
+  if (button) {
+    button.addEventListener('click', function () {
+      form.classList.add('errorVisible')
+    })
+  }
 
   form.onsubmit = async (e) => {
     e.preventDefault()
@@ -166,8 +207,6 @@ forms.forEach(function (form) {
 
     let result = await response.json()
 
-    console.log(result)
-
     if (result.redirect) window.location.href = result.redirect
 
     result.message ?
@@ -176,7 +215,7 @@ forms.forEach(function (form) {
 
     form.reset()
 
-    if (result.snackbarText) createSnackbar(result.snackbarText, result.snackbarButton);
+    if (result.snackbarText) createSnackbar(result.snackbarText, result.snackbarButton)
   }
 })
 
@@ -249,7 +288,6 @@ let createSnackbar = (function () {
 
     if (actionText) {
       if (!action) {
-        console.log('close');
         action = snackbar.dismiss.bind(snackbar)
       }
       let actionButton = document.createElement("button")
@@ -294,9 +332,7 @@ let parallaxImg = document.querySelectorAll('.parallax-bg > *')
 function initParallax() {
   let i = 3
   parallaxImg.forEach(function (img, index) {
-    if (index === 2) return false
     if (index > 2) i = 12
-    console.log('i', i)
     img.style.transform = "translateY(" + window.scrollY / i + "px)"
     if (index < 3) i++
   })
@@ -304,11 +340,30 @@ function initParallax() {
 
 function initScrolling() {
   let body = document.querySelector("body")
-  window.scrollY > 72 ? body.classList.add('scrolling') : body.classList.remove('scrolling')
+  window.scrollY > 264 ? body.classList.add('scrolling') : body.classList.remove('scrolling')
+}
+
+let startBox = document.getElementById('promo')
+let endBox = document.querySelector('.description')
+let gallery = document.querySelector('.swiper')
+let header = document.getElementById('header')
+
+function initSwiperControls() {
+  let startTop = startBox.getBoundingClientRect()
+  let endTop = endBox.getBoundingClientRect()
+  startTop.height + startTop.top - 144 <= 0 && endTop.top - window.screen.height >= 0 ?
+    gallery.classList.remove('hidden-controls') : 
+    gallery.classList.add('hidden-controls')
+
+  startTop.height + startTop.top - 48 <= 0 ?
+    header.classList.add('black-style') : header.classList.remove('black-style')
+
+  startTop.height + startTop.top - 264 <= 0 ?
+    mute.classList.add('hidden') : mute.classList.remove('hidden')
 }
 
 function isInViewport(el) {
-  const rect = el.getBoundingClientRect();
+  const rect = el.getBoundingClientRect()
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
@@ -331,3 +386,130 @@ let logoF = document.querySelector('#footer .logo')
 function initLogoChange() {
   isInViewport(logoF) ? logoH.classList.add('hidden') : logoH.classList.remove('hidden')
 }
+
+// Product
+
+let colorParam = document.querySelectorAll('.color-style input')
+let productImgs = document.querySelectorAll('.product img')
+
+colorParam.forEach(function (color, index) {
+  color.addEventListener('change', function () {
+    let colorId = color.getAttribute('data-id')
+    let productImg = document.getElementById(colorId)
+    productImg.classList.add('display')
+    setTimeout(function () {
+      productImgs.forEach(function (img, imgIndex) {
+        if (colorId != img.getAttribute('id')) img.classList.remove('display')
+      })
+    }, 200)
+  })
+})
+
+// Catalog
+
+let catalogButton = document.getElementById('catalogButton')
+let catalog = document.querySelector('.catalog')
+
+if (catalogButton) {
+  catalogButton.addEventListener('click', function (e) {
+    e.preventDefault()
+    catalogButton.classList.toggle('active')
+    catalog.classList.toggle('display')
+  })
+  
+  document.addEventListener('click', function (e) {
+    if (e.target.id === 'catalogButton' || e.target.classList.contains('catalog')) return
+    else {
+      catalogButton.classList.remove('active')
+      catalog.classList.remove('display')
+    }
+  })
+}
+
+// Noice Effect
+
+var options = {
+  "animate": true,
+  "patternWidth": 247.74,
+  "patternHeight": 80.24,
+  "grainOpacity": 0.08,
+  "grainDensity": 1.3,
+  "grainWidth": 1,
+  "grainHeight": 1
+}
+
+let bodyElem = document.querySelector('body')
+
+if (bodyElem.classList.contains('home-layout')) grained("#wrapper", options)
+
+// Video
+
+let video = document.getElementById('video')
+let mute = document.getElementById('muted')
+
+mute.addEventListener('click', function(e) {
+  video.muted = !video.muted
+  mute.classList.toggle('on')
+})
+
+// Cookie
+
+let cookieBox = document.getElementById('cookie')
+let accept = cookieBox.querySelector('.submit')
+
+function setCookie(name, value, options = {}) {
+
+  options = {
+    path: '/',
+    // при необходимости добавьте другие значения по умолчанию
+    ...options
+  }
+
+  if (options.expires instanceof Date) {
+    options.expires = options.expires.toUTCString()
+  }
+
+  let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value)
+
+  for (let optionKey in options) {
+    updatedCookie += " " + optionKey
+    let optionValue = options[optionKey]
+    if (optionValue !== true) {
+      updatedCookie += "=" + optionValue
+    }
+  }
+
+  document.cookie = updatedCookie
+}
+
+// возвращает куки с указанным name,
+// или undefined, если ничего не найдено
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+accept.addEventListener('click', function (e) {
+  e.preventDefault()
+  setCookie('policy', true, {secure: true, 'max-age': 604800})
+  cookieBox.classList.remove('display')
+})
+
+// Product Gallery
+
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  loop: true,
+  lazy: true,
+  effect: "fade",
+  slidesPerView: 1,
+  spaceBetween: 0,
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});

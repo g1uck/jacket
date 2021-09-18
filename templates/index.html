@@ -3,193 +3,253 @@
 <!-- build:section layout.head -->
 <!-- /build -->
 
-<body class="home-layout">
+<body class="landing-layout">
 	<div id="svg-icon-placeholder" style="display: none;"></div>
 	<div id="wrapper">
-		<!-- build:section layout.header -->
-		<!-- /build -->
-		<div class="parallax-bg">
-			<img src="images/stone_2.webp" alt="">
-			<img src="images/stone_3.webp" alt="">
-			<img src="images/stone_4.webp" alt="">
-			<img src="images/stone_5.webp" alt="">
-			<div class="bg-video">
-				<img src="images/video.webp" alt="">
-				<video autoplay muted loop>
-					<source src="video/video.mp4" type="video/mp4">
-					<!-- <source src="video/video.ogv" type="video/ogg">
-					<source src="video/video.webm" type="video/webm"> -->
-					Your browser doesn't support HTML5 video tag.
-				</video>
+		<header id="header">
+			<div class="container">
+				<a href="#" class="menu-icon">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M3 17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17C21 16.4477 20.5523 16 20 16H4C3.44772 16 3 16.4477 3 17ZM3 12C3 12.5523 3.44772 13 4 13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H4C3.44772 11 3 11.4477 3 12ZM4 6C3.44772 6 3 6.44772 3 7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7C21 6.44772 20.5523 6 20 6H4Z"
+							fill="white" />
+					</svg>
+				</a>
+				<strong class="logo"><a href="/">
+					<svg width="192" height="48" viewBox="0 0 192 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="78.3223" cy="6.32227" r="3" transform="rotate(-45 78.3223 6.32227)" fill="white" />
+						<circle cx="86.8077" cy="33.1924" r="3" transform="rotate(-45 86.8077 33.1924)" fill="white" />
+						<circle cx="78.3223" cy="41.6775" r="3" transform="rotate(-45 78.3223 41.6775)" fill="white" />
+						<circle cx="105.192" cy="14.8076" r="3" transform="rotate(-45 105.192 14.8076)" fill="white" />
+						<circle cx="86.8077" cy="14.8076" r="3" transform="rotate(-45 86.8077 14.8076)" fill="white" />
+						<circle cx="105.192" cy="33.1924" r="3" transform="rotate(-45 105.192 33.1924)" fill="white" />
+						<circle cx="113.678" cy="6.32227" r="3" transform="rotate(-45 113.678 6.32227)" fill="white" />
+						<circle cx="113.678" cy="41.6775" r="3" transform="rotate(-45 113.678 41.6775)" fill="white" />
+						<circle cx="96.0001" cy="24" r="4" transform="rotate(-45 96.0001 24)" fill="white" />
+						<path
+							d="M9.264 30.08C8.89066 30.08 8.592 30.0427 8.368 29.9681V28.8C8.58133 28.8747 8.83733 28.9121 9.136 28.9121C9.65866 28.9121 10.0373 28.7894 10.272 28.5441C10.5173 28.2987 10.64 27.904 10.64 27.36V18.8H11.92V27.328C11.92 28.2667 11.7013 28.9601 11.264 29.4081C10.8373 29.8561 10.1707 30.08 9.264 30.08Z"
+							fill="white" />
+						<path
+							d="M55.912 30H54.6L54.104 27.616H51.064L50.584 30H49.368L51.752 18.8H53.496L55.912 30ZM52.568 20.256L51.304 26.496H53.864L52.568 20.256Z"
+							fill="white" />
+						<path d="M141.064 30H135.912V18.8H141.064V19.952H137.192V23.664H140.36V24.8H137.192V28.848H141.064V30Z"
+							fill="white" />
+						<path d="M182.936 30H181.656V19.952H179.368V18.8H185.224V19.952H182.936V30Z" fill="white" />
+					</svg>
+				</a></strong>
+				<a href="#" class="instagram">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M2.65396 5.27606C2 6.55953 2 8.23969 2 11.6V12.4C2 15.7603 2 17.4405 2.65396 18.7239C3.2292 19.8529 4.14708 20.7708 5.27606 21.346C6.55953 22 8.23969 22 11.6 22H12.4C15.7603 22 17.4405 22 18.7239 21.346C19.8529 20.7708 20.7708 19.8529 21.346 18.7239C22 17.4405 22 15.7603 22 12.4V11.6C22 8.23969 22 6.55953 21.346 5.27606C20.7708 4.14708 19.8529 3.2292 18.7239 2.65396C17.4405 2 15.7603 2 12.4 2H11.6C8.23969 2 6.55953 2 5.27606 2.65396C4.14708 3.2292 3.2292 4.14708 2.65396 5.27606ZM12.4 4H11.6C9.88684 4 8.72225 4.00156 7.82208 4.0751C6.94524 4.14674 6.49684 4.27659 6.18404 4.43597C5.43139 4.81947 4.81947 5.43139 4.43597 6.18404C4.27659 6.49684 4.14674 6.94524 4.0751 7.82208C4.00156 8.72225 4 9.88684 4 11.6V12.4C4 14.1132 4.00156 15.2777 4.0751 16.1779C4.14674 17.0548 4.27659 17.5032 4.43597 17.816C4.81947 18.5686 5.43139 19.1805 6.18404 19.564C6.49684 19.7234 6.94524 19.8533 7.82208 19.9249C8.72225 19.9984 9.88684 20 11.6 20H12.4C14.1132 20 15.2777 19.9984 16.1779 19.9249C17.0548 19.8533 17.5032 19.7234 17.816 19.564C18.5686 19.1805 19.1805 18.5686 19.564 17.816C19.7234 17.5032 19.8533 17.0548 19.9249 16.1779C19.9984 15.2777 20 14.1132 20 12.4V11.6C20 9.88684 19.9984 8.72225 19.9249 7.82208C19.8533 6.94524 19.7234 6.49684 19.564 6.18404C19.1805 5.43139 18.5686 4.81947 17.816 4.43597C17.5032 4.27659 17.0548 4.14674 16.1779 4.0751C15.2777 4.00156 14.1132 4 12.4 4ZM17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12ZM15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12ZM17 8C17.5523 8 18 7.55228 18 7C18 6.44772 17.5523 6 17 6C16.4477 6 16 6.44772 16 7C16 7.55228 16.4477 8 17 8Z"
+							fill="white" />
+					</svg>
+				</a>
+			</div>
+		</header>
+		<div id="promo">
+			<video id="video" autoplay muted loop>
+				<source src="video/promo.mp4" type="video/mp4">
+				<!-- <source src="video/promo.ogv" type="video/ogg">
+				<source src="video/promo.webm" type="video/webm"> -->
+				Your browser doesn't support HTML5 video tag.
+			</video>
+			<div class="container">
+				<a href="#" id="muted">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+						<path
+							d="M3.63 3.63c-.39.39-.39 1.02 0 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .72.73 1.18 1.39.91.8-.33 1.55-.77 2.22-1.31l1.34 1.34c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L5.05 3.63c-.39-.39-1.02-.39-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.23-1.22.86v.19c0 .38.25.71.61.85C17.18 6.54 19 9.06 19 12zm-8.71-6.29l-.17.17L12 7.76V6.41c0-.89-1.08-1.33-1.71-.7zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v1.79l2.48 2.48c.01-.08.02-.16.02-.24z" />
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+						<path
+							d="M3 10v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71V6.41c0-.89-1.08-1.34-1.71-.71L7 9H4c-.55 0-1 .45-1 1zm13.5 2c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 4.45v.2c0 .38.25.71.6.85C17.18 6.53 19 9.06 19 12s-1.82 5.47-4.4 6.5c-.36.14-.6.47-.6.85v.2c0 .63.63 1.07 1.21.85C18.6 19.11 21 15.84 21 12s-2.4-7.11-5.79-8.4c-.58-.23-1.21.22-1.21.85z" />
+					</svg>
+				</a>
+				<div class="scrolldown">
+					<span>come down</span>
+					<svg width="52" height="35" viewBox="0 0 52 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g filter="url(#filter0_d)">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M10.1213 5.87869C11.2929 7.05027 11.2929 8.94976 10.1213 10.1213C8.94973 11.2929 7.05023 11.2929 5.87866 10.1213C4.70709 8.94976 4.70709 7.05027 5.87866 5.87869C7.05023 4.70712 8.94973 4.70712 10.1213 5.87869ZM36.9914 14.364C38.163 15.5356 38.163 17.4351 36.9914 18.6067C35.8198 19.7783 33.9203 19.7783 32.7488 18.6067C31.5772 17.4351 31.5772 15.5356 32.7488 14.364C33.9203 13.1925 35.8198 13.1925 36.9914 14.364ZM18.6067 18.6067C19.7782 17.4351 19.7782 15.5356 18.6067 14.364C17.4351 13.1925 15.5356 13.1925 14.364 14.364C13.1924 15.5356 13.1924 17.4351 14.364 18.6067C15.5356 19.7783 17.4351 19.7783 18.6067 18.6067ZM45.4768 5.87869C46.6483 7.05027 46.6483 8.94976 45.4768 10.1213C44.3052 11.2929 42.4057 11.2929 41.2341 10.1213C40.0626 8.94976 40.0626 7.05027 41.2341 5.87869C42.4057 4.70712 44.3052 4.70712 45.4768 5.87869ZM28.5063 28.5062C30.0684 26.9441 30.0684 24.4114 28.5063 22.8493C26.9442 21.2872 24.4115 21.2872 22.8494 22.8493C21.2873 24.4114 21.2873 26.9441 22.8494 28.5062C24.4115 30.0683 26.9442 30.0683 28.5063 28.5062Z"
+								fill="white" />
+						</g>
+						<defs>
+							<filter id="filter0_d" x="0" y="0" width="51.3555" height="34.6777" filterUnits="userSpaceOnUse"
+								color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix" />
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+									result="hardAlpha" />
+								<feOffset />
+								<feGaussianBlur stdDeviation="2.5" />
+								<feComposite in2="hardAlpha" operator="out" />
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0" />
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+							</filter>
+						</defs>
+					</svg>
+				</div>
 			</div>
 		</div>
-		<div id="promo">
-			<div class="welcom">
-				<div class="middle">
-					<div class="back"><span>Rethinking the form.</span> The form is partly reflecting the times and the circumstances we live in. Getting a new form to existing things means keeping up with the changes around us. We feel the time, therefore have translated a <span>new aesthetics</span> into our brand DNA.</div>
-					<strong id="welcom"></strong>
-					<div class="scrolldown">
-						<span>come down</span>
-						<svg width="52" height="35" viewBox="0 0 52 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<g filter="url(#filter0_d)">
-								<path fill-rule="evenodd" clip-rule="evenodd"
-									d="M10.1213 5.87869C11.2929 7.05027 11.2929 8.94976 10.1213 10.1213C8.94973 11.2929 7.05023 11.2929 5.87866 10.1213C4.70709 8.94976 4.70709 7.05027 5.87866 5.87869C7.05023 4.70712 8.94973 4.70712 10.1213 5.87869ZM36.9914 14.364C38.163 15.5356 38.163 17.4351 36.9914 18.6067C35.8198 19.7783 33.9203 19.7783 32.7488 18.6067C31.5772 17.4351 31.5772 15.5356 32.7488 14.364C33.9203 13.1925 35.8198 13.1925 36.9914 14.364ZM18.6067 18.6067C19.7782 17.4351 19.7782 15.5356 18.6067 14.364C17.4351 13.1925 15.5356 13.1925 14.364 14.364C13.1924 15.5356 13.1924 17.4351 14.364 18.6067C15.5356 19.7783 17.4351 19.7783 18.6067 18.6067ZM45.4768 5.87869C46.6483 7.05027 46.6483 8.94976 45.4768 10.1213C44.3052 11.2929 42.4057 11.2929 41.2341 10.1213C40.0626 8.94976 40.0626 7.05027 41.2341 5.87869C42.4057 4.70712 44.3052 4.70712 45.4768 5.87869ZM28.5063 28.5062C30.0684 26.9441 30.0684 24.4114 28.5063 22.8493C26.9442 21.2872 24.4115 21.2872 22.8494 22.8493C21.2873 24.4114 21.2873 26.9441 22.8494 28.5062C24.4115 30.0683 26.9442 30.0683 28.5063 28.5062Z"
-									fill="white" />
-							</g>
-							<defs>
-								<filter id="filter0_d" x="0" y="0" width="51.3555" height="34.6777" filterUnits="userSpaceOnUse"
-									color-interpolation-filters="sRGB">
-									<feFlood flood-opacity="0" result="BackgroundImageFix" />
-									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-										result="hardAlpha" />
-									<feOffset />
-									<feGaussianBlur stdDeviation="2.5" />
-									<feComposite in2="hardAlpha" operator="out" />
-									<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0" />
-									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-									<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
-								</filter>
-							</defs>
-						</svg>
-					</div>
-				</div>
-			</div>
+		<main id="main">
 			<div class="product">
-				<img src="images/jacket_b.webp" alt="">
-				<div class="point-desc">
-					<div class="point">
-						<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<circle cx="19.5" cy="19.5" r="19.5" fill="black" fill-opacity="0.3" />
-							<circle cx="19.5" cy="14.5" r="1.5" fill="#00D1FF" />
-							<circle cx="14.5" cy="19.5" r="1.5" fill="#00D1FF" />
-							<circle cx="19.5" cy="19.5" r="1.5" fill="white" />
-							<circle cx="24.5" cy="19.5" r="1.5" fill="#00D1FF" />
-							<circle cx="19.5" cy="24.5" r="1.5" fill="#00D1FF" />
+				<!-- Slider main container -->
+				<div class="swiper hidden-controls">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide">
+							<!-- Required swiper-lazy class and image source specified in data-src attribute -->
+							<img data-src="images/jacket_default.webp" class="swiper-lazy" />
+							<div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />
+									<circle cx="9" cy="9" r="1" fill="white" />
+									<circle cx="5" cy="9" r="1" fill="white" />
+									<circle cx="13" cy="9" r="1" fill="white" />
+									<circle cx="9" cy="13" r="1" fill="white" />
+									<circle cx="9" cy="5" r="1" fill="white" />
+								</svg>
+							</div>
+							<div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />
+									<circle cx="9" cy="9" r="1" fill="white" />
+									<circle cx="5" cy="9" r="1" fill="white" />
+									<circle cx="13" cy="9" r="1" fill="white" />
+									<circle cx="9" cy="13" r="1" fill="white" />
+									<circle cx="9" cy="5" r="1" fill="white" />
+								</svg>
+							</div>
+							<div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />
+									<circle cx="9" cy="9" r="1" fill="white" />
+									<circle cx="5" cy="9" r="1" fill="white" />
+									<circle cx="13" cy="9" r="1" fill="white" />
+									<circle cx="9" cy="13" r="1" fill="white" />
+									<circle cx="9" cy="5" r="1" fill="white" />
+								</svg>
+							</div>
+							<div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />
+									<circle cx="9" cy="9" r="1" fill="white" />
+									<circle cx="5" cy="9" r="1" fill="white" />
+									<circle cx="13" cy="9" r="1" fill="white" />
+									<circle cx="9" cy="13" r="1" fill="white" />
+									<circle cx="9" cy="5" r="1" fill="white" />
+								</svg>
+							</div>
+							<div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />
+									<circle cx="9" cy="9" r="1" fill="white" />
+									<circle cx="5" cy="9" r="1" fill="white" />
+									<circle cx="13" cy="9" r="1" fill="white" />
+									<circle cx="9" cy="13" r="1" fill="white" />
+									<circle cx="9" cy="5" r="1" fill="white" />
+								</svg>
+							</div>
+							<!-- Preloader image -->
+							<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+						</div>
+						<div class="swiper-slide">
+							<!-- Required swiper-lazy class and image source specified in data-src attribute -->
+							<img data-src="images/jacket_default.webp" class="swiper-lazy" />
+							<!-- Preloader image -->
+							<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+						</div>
+						<div class="swiper-slide">
+							<!-- Required swiper-lazy class and image source specified in data-src attribute -->
+							<img data-src="images/jacket_default.webp" class="swiper-lazy" />
+							<!-- Preloader image -->
+							<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+						</div>
+						<div class="swiper-slide">
+							<!-- Required swiper-lazy class and image source specified in data-src attribute -->
+							<img data-src="images/jacket_default.webp" class="swiper-lazy" />
+							<!-- Preloader image -->
+							<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+						</div>
+					</div>
+					<!-- If we need navigation buttons -->
+					<div class="swiper-button-prev">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M12 7C6.48 7 2 9.24 2 12C2 14.24 4.94 16.13 9 16.77V18.79C9 19.24 9.54 19.46 9.85 19.14L12.64 16.35C12.84 16.15 12.84 15.84 12.64 15.64L9.85 12.85C9.54 12.54 9 12.76 9 13.21V14.73C5.85 14.17 4 12.83 4 12C4 10.94 7.04 9 12 9C16.96 9 20 10.94 20 12C20 12.66 18.8 13.68 16.68 14.34C16.27 14.47 16 14.85 16 15.28C16 15.95 16.65 16.44 17.28 16.24C20.11 15.36 22 13.79 22 12C22 9.24 17.52 7 12 7Z"
+								fill="black" />
 						</svg>
 					</div>
-					<div class="desc">
-						<strong>Protective glass</strong>
-						<p>LaRC focuses on aeronautical research, thoasaugh the Apollo lunar landera </p>
-					</div>
-				</div>
-				<div class="point-desc">
-					<div class="point">
-						<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<circle cx="19.5" cy="19.5" r="19.5" fill="black" fill-opacity="0.3" />
-							<circle cx="19.5" cy="14.5" r="1.5" fill="#00D1FF" />
-							<circle cx="14.5" cy="19.5" r="1.5" fill="#00D1FF" />
-							<circle cx="19.5" cy="19.5" r="1.5" fill="white" />
-							<circle cx="24.5" cy="19.5" r="1.5" fill="#00D1FF" />
-							<circle cx="19.5" cy="24.5" r="1.5" fill="#00D1FF" />
+					<div class="swiper-button-next">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M12 7C17.52 7 22 9.24 22 12C22 14.24 19.06 16.13 15 16.77V18.79C15 19.24 14.46 19.46 14.15 19.14L11.36 16.35C11.16 16.15 11.16 15.84 11.36 15.64L14.15 12.85C14.46 12.54 15 12.76 15 13.21V14.73C18.15 14.17 20 12.83 20 12C20 10.94 16.96 9 12 9C7.04 9 4 10.94 4 12C4 12.66 5.2 13.68 7.32 14.34C7.73 14.47 8 14.85 8 15.28C8 15.95 7.35 16.44 6.72 16.24C3.89 15.36 2 13.79 2 12C2 9.24 6.48 7 12 7Z"
+								fill="black" />
 						</svg>
 					</div>
-					<div class="desc">
-						<strong>Protective glass</strong>
-						<p>LaRC focuses on aeronautical research, thoasaugh the Apollo lunar landera </p>
-					</div>
 				</div>
-				<div class="point-desc">
-					<div class="point">
-						<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<circle cx="19.5" cy="19.5" r="19.5" fill="black" fill-opacity="0.3" />
-							<circle cx="19.5" cy="14.5" r="1.5" fill="#00D1FF" />
-							<circle cx="14.5" cy="19.5" r="1.5" fill="#00D1FF" />
-							<circle cx="19.5" cy="19.5" r="1.5" fill="white" />
-							<circle cx="24.5" cy="19.5" r="1.5" fill="#00D1FF" />
-							<circle cx="19.5" cy="24.5" r="1.5" fill="#00D1FF" />
-						</svg>
-					</div>
-					<div class="desc">
-						<strong>Protective glass</strong>
-						<p>LaRC focuses on aeronautical research, thoasaugh the Apollo lunar landera </p>
-					</div>
-				</div>
-			</div>
-			<form class="panel" action="#" method="post">
-				<div class="container">
-					<div data-title="Model" class="box">
-						<strong class="title">Jacket MLJ01_BL</strong>
-						<span class="price">$ 345.00</span>
-					</div>
-					<div class="align-right">
+				<form class="panel" action="#" method="post">
+					<div class="container">
+						<div data-title="Jacket Сolor" class="box">
+							<div class="parameters color-style">
+								<label data-tippy-content="Black" data-tippy-arrow="false" data-tippy-placement="bottom">
+									<input checked type="radio" name="color_jacket" id=""><span style="background-color: black;"></span>
+								</label>
+								<label data-tippy-content="Gray" data-tippy-arrow="false" data-tippy-placement="bottom">
+									<input type="radio" name="color_jacket" id=""><span style="background-color: #8B8B8B;"></span>
+								</label>
+								<label data-tippy-content="White" data-tippy-arrow="false" data-tippy-placement="bottom">
+									<input type="radio" name="color_jacket" id=""><span style="background-color: #F3F3F3;"></span>
+								</label>
+							</div>
+						</div>
+						<a href="#" class="submit">go to catalog</a>
 						<div data-title="Glass Color" class="box">
 							<div class="parameters color-style">
 								<label data-tippy-content="Transparent" data-tippy-arrow="false" data-tippy-placement="bottom">
-									<input checked type="radio" name="color" id=""><span style="background-color: #EDEDED;"></span>
+									<input data-id="transparent" checked type="radio" name="color_glass" id=""><span style="background-color: #EDEDED;"></span>
 								</label>
 								<label data-tippy-content="Silver" data-tippy-arrow="false" data-tippy-placement="bottom">
-									<input type="radio" name="color" id=""><span style="background-color: #8B8B8B;"></span>
+									<input data-id="silver" type="radio" name="color_glass" id=""><span style="background-color: #8B8B8B;"></span>
 								</label>
 								<label data-tippy-content="Golden" data-tippy-arrow="false" data-tippy-placement="bottom">
-									<input type="radio" name="color" id=""><span style="background-color: #CBB700;"></span>
+									<input data-id="gold" type="radio" name="color_glass" id=""><span style="background-color: #CBB700;"></span>
 								</label>
 							</div>
 						</div>
-						<div data-title="Size" class="box">
-							<div class="parameters">
-								<label>
-									<input type="radio" name="size" id=""><span>S</span>
-								</label>
-								<label>
-									<input checked type="radio" name="size" id=""><span>m</span>
-								</label>
-								<label>
-									<input type="radio" name="size" id=""><span>l</span>
-								</label>
-								<label>
-									<input type="radio" name="size" id=""><span>xl</span>
-								</label>
-								<label data-tippy-content="sold out" data-tippy-arrow="false" data-tippy-placement="bottom">
-									<input disabled type="radio" name="size" id=""><span>xXl</span>
-								</label>
-							</div>
-						</div>
-						<button type="submit" class="submit">add to shoping bag</button>
 					</div>
-					<div class="label">
-						<strong>23</strong>
-						<span>pieces</span>
-					</div>
-				</div>
-			</form>
-		</div>
-		<main id="main">
+				</form>
+			</div>
 			<div class="container">
-				<div class="grid">
-					<div class="grid-item">
-						<h2>Style</h2>
-						<p>Transformable oval polycarbonate protective lens to protect against environmental influences and keep your privacy, which is hidden in the hood comes in two variations — clear and mirrored (supports Face ID). Security pocket  with Faraday grid lining ​​makes the device inside invisible and protects your cards from the scamming, as it cancels all electronic components outside the pocket.</p>
+				<div class="description">
+					<div class="item">
+						<div class="image" data-bg style="background-image: url(images/img_01.webp);"></div>
+						<div class="desc">
+							<div class="middle">
+								<h2>Style</h2>
+								<p>Transformable oval polycarbonate protective lens to protect against environmental influences and keep your privacy, which is hidden in the hood comes in two variations — clear and mirrored (supports Face ID). Security pocket  with Faraday grid lining ​​makes the device inside invisible and protects your cards from the scamming, as it cancels all electronic components outside the pocket.</p>
+							</div>
+						</div>
 					</div>
-					<div class="grid-item">
-						<h2>Composition</h2>
-						<p>The hood, with snap-fastened strap at neck, can be split in two halves, through a zipper hidden under an opaque nylon fabric, held by snaps. Two slanting pockets with overstitched flap and hidden zipper fastening on front. Opaque nylon patch on elbows. Ribbed cuffs. Two-way zipper fastening edged with tapes, hidden by the overstitched placket with buttons held by elasticized loops.</p>
+					<div class="item">
+						<div class="image" data-bg style="background-image: url(images/img_02.webp);"></div>
+						<div class="desc">
+							<div class="middle">
+								<h2>Composition</h2>
+								<p>The hood, with snap-fastened strap at neck, can be split in two halves, through a zipper hidden under an opaque nylon fabric, held by snaps. Two slanting pockets with overstitched flap and hidden zipper fastening on front. Opaque nylon patch on elbows. Ribbed cuffs. Two-way zipper fastening edged with tapes, hidden by the overstitched placket with buttons held by elasticized loops.</p>
+							</div>
+						</div>
 					</div>
-					<div class="grid-item">
-						<h2>Care</h2>
-						<p>Wash at max 30°C - Mild cycle; Do not bleach; Tumble dry at low heat; Ironing maximum temperature 110°C - without steam; Do not dry clean; Line dry in the shade; Washing can alter color intensity, wash inside out, wash separately; Use neutral detergent; Remove detachable accessories before washing; Iron with a cloth between the item and the iron</p>
+					<div class="item">
+						<div class="image" data-bg style="background-image: url(images/img_03.webp);"></div>
+						<div class="desc">
+							<div class="middle">
+								<h2>Care</h2>
+								<p>Wash at max 30°C - Mild cycle; Do not bleach; Tumble dry at low heat; Ironing maximum temperature 110°C - without steam; Do not dry clean; Line dry in the shade; Washing can alter color intensity, wash inside out, wash separately; Use neutral detergent; Remove detachable accessories before washing; Iron with a cloth between the item and the iron</p>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="grid half">
-					<a data-fancybox="video" href="https://www.youtube.com/watch?v=z2X2HaTvkl8" class="grid-item card-style">
-						<img class="preview" src="images/video_1.webp" alt="">
-						<div class="bg" data-bg style="background-image: url(images/video_1.webp);"></div>
-						<div class="play-icon"><img src="images/play.svg" alt=""></div>
-						<div class="desc">
-							<span>Video Clip #1</span>
-							<strong>Jacket MLJ01_BL</strong>
-						</div>
-					</a>
-					<a data-fancybox="video" href="https://www.youtube.com/watch?v=z2X2HaTvkl8" class="grid-item card-style">
-						<img class="preview" src="images/video_2.webp" alt="">
-						<div class="bg" data-bg style="background-image: url(images/video_2.webp);"></div>
-						<div class="play-icon"><img src="images/play.svg" alt=""></div>
-						<div class="desc">
-							<span>Video Clip #2</span>
-							<strong>Jacket MLJ01_BL</strong>
-						</div>
-					</a>
-				</div>
-				<form method="POST" action="/_inc/subscribe.php" class="subscribe">
+			</div>
+		</main>
+		<div id="bottom">
+			<div class="container">
+				<form method="POST" action="/_inc/subscribe.php" class="subscribe"ß>
 					<div class="middle">
 						<div class="input">
 							<input id="subscribe" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="email" placeholder="Enter Your email" required>
@@ -198,7 +258,7 @@
 							<span class="clone"></span>
 							<a href="#" class="backEnter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z" fill="#00D1FF" /></svg></a>
 							<header>
-								<strong>Subscribe to our newsletter!</strong>
+								<strong>Are You ready to transform Your reality soon?</strong>
 								<strong>Error!</strong>
 							</header>
 							<footer>
@@ -210,128 +270,13 @@
 					</div>
 				</form>
 			</div>
-		</main>
-
-		<!-- Dialog Contents -->
-		<div id="dialog-content" class="dialog" style="display:none;max-width:480px;">
-			<h3>Come on in</h3>
-			<ul id="tabs" class="tabs">
-				<li class="active"><a href="#login">Sign in</a></li>
-				<li><a href="#reg">I'M NEW HERE</a></li>
-			</ul>
-			<form autocomplete="off" action="_inc/login.php" method="POST" id="login" class="tab display">
-				<div class="input">
-					<input autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="login_email" placeholder="Email" required>
-					<label><span>email adresses</span></label>
-					<span class="error">This field is required</span>
-				</div>
-				<div class="input">
-					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="login_password" placeholder="Password" class="password-type" required>
-					<label><span>Password</span></label>
-					<span class="error">This field is required</span>
-					<span class="toggle-password">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"
-								fill="#999999" />
-						</svg>
-					</span>
-				</div>
-				<label class="controller">
-					<input type="checkbox" name="keep" value="Keep me signed in">
-					<span>Keep me signed in</span>
-				</label>
-				<button type="submit" class="submit">SIgn in</button>
-				<div class="center"><a class="external-tab" href="#forgot">Forgot your password?</a></div>
-			</form>
-			<form autocomplete="off" action="_inc/data.php" method="POST" id="forgot" class="tab">
-				<div class="input">
-					<input autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="forgot_email" placeholder="Email" required>
-					<label><span>email adresses</span></label>
-					<span class="error">This field is required</span>
-				</div>
-				<p class="input-note">Enter your details and we'll send you<br>a link to reset your password</p>
-				<button type="submit" class="submit">reset password</button>
-				<div class="center"><a class="external-tab" href="#login">Back To Sign In</a></div>
-			</form>
-			<form autocomplete="off" action="_inc/data.php" method="POST" id="reg" class="tab">
-				<div class="grid small">
-					<label class="controller">
-						<input checked type="radio" name="gender_reg" value="Mr.">
-						<span>Mr.</span>
-					</label>
-					<label class="controller">
-						<input type="radio" name="gender_reg" value="Mrs. / Мs.">
-						<span>Mrs. / Мs.</span>
-					</label>
-				</div>
-				<div class="input">
-					<input autocomplete="off" type="text" name="first_name" placeholder="First Name" required>
-					<label><span>First Name</span></label>
-					<span class="error">This field is required</span>
-				</div>
-				<div class="input">
-					<input autocomplete="off" type="text" name="last_name" placeholder="Last Name" required>
-					<label><span>Last Name</span></label>
-					<span class="error">This field is required</span>
-				</div>
-				<div class="input">
-					<input autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="reg_email" placeholder="Email" required>
-					<label><span>email adresses</span></label>
-					<span class="error">This field is required</span>
-				</div>
-				<div class="input">
-					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="reg_password" placeholder="Password" class="password-type" id="password" required>
-					<label><span>Password</span></label>
-					<span class="error">This field is required</span>
-					<span class="toggle-password">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"
-								fill="#999999" />
-						</svg>
-					</span>
-				</div>
-				<div class="input">
-					<input autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="confirm_password" placeholder="Confirm Password" class="password-type" id="confirm-password" required>
-					<label><span>Confirm Password</span></label>
-					<span class="error">This field is required</span>
-					<span class="toggle-password">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"
-								fill="#999999" />
-						</svg>
-					</span>
-				</div>
-				<label class="controller">
-					<input type="checkbox" name="keep" value="Agree" required>
-					<span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
-				</label>
-				<button type="submit" class="submit">Register</button>
-				<div class="msg-success">
-					<div class="middle">
-						<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M6 12L22 22L38 12V18H42V8C42 5.8 40.2 4 38 4H6C3.8 4 2.02 5.8 2.02 8L2 32C2 34.2 3.8 36 6 36H14V32H6V12ZM38 8L22 18L6 8H38Z"
-								fill="#181F22" />
-							<path
-								d="M28 24H32V28H28C25.7908 28 24 29.7909 24 32C24 34.2091 25.7908 36 28 36H32V40H28C23.5817 40 20 36.4183 20 32C20 27.5817 23.5817 24 28 24Z"
-								fill="#00D1FF" />
-							<path
-								d="M40 36H36V40H40C44.4183 40 48 36.4183 48 32C48 27.5817 44.4183 24 40 24H36V28H40C42.2092 28 44 29.7909 44 32C44 34.2091 42.2092 36 40 36Z"
-								fill="#00D1FF" />
-							<path d="M39 30H29V34H39V30Z" fill="#00D1FF" />
-						</svg>
-						<strong class="title">A link to confirm it has been sent to your email address.</strong>
-						<p>Sometimes emails end up in spam ;)</p>
-					</div>
-				</div>
-			</form>
+			<!-- build:section layout.footer -->
+			<!-- /build -->
 		</div>
-
-		<!-- build:section layout.footer -->
-		<!-- /build -->
+		<div id="cookie">
+			<p>This website uses cookies to ensure you get the best experience on our website. </p>
+			<a href="#" class="submit">accept</a>
+		</div>
 	</div>
 </body>
 
