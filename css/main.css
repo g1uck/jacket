@@ -478,9 +478,15 @@ body {
       min-height: 36px;
       border: 6px solid #181F22; }
   body.subscribe-layout {
-    background: #181F22 url(../images/bg.webp) no-repeat 50% 0/100% auto; }
+    background: #181F22 url(../images/desktop.webp) no-repeat 50% 0/cover; }
   body.empty-layout {
     min-width: 320px; }
+  @media (max-width: 767px) {
+    body.landing-layout {
+      min-width: 360px; }
+    body.subscribe-layout {
+      min-width: 360px;
+      background-image: url(../images/mobile.webp); } }
   .mobile body.home-layout {
     background-position: 0 0;
     background-size: 1200px auto; }
@@ -1275,8 +1281,45 @@ form.success .msg-success {
     .subscribe .label span {
       font-size: 14px;
       line-height: 24px; }
-  .subscribe-layout .subscribe {
-    background-color: rgba(0, 0, 0, 0.3); }
+
+.gender-choice {
+  position: absolute;
+  top: -72px;
+  left: 50%;
+  padding-left: 144px;
+  padding-right: 72px;
+  max-width: 1248px;
+  width: 100%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap; }
+  .gender-choice label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 5;
+    margin-right: 24px; }
+    .gender-choice label input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0; }
+      .gender-choice label input:checked + span {
+        cursor: default;
+        color: black; }
+    .gender-choice label span {
+      display: block;
+      color: #999;
+      cursor: pointer;
+      z-index: 1;
+      position: relative;
+      transition: color 0.3s ease; }
 
 :root {
   --scroll-bar: 8px;
@@ -1304,6 +1347,10 @@ form.success .msg-success {
     padding-left: 72px;
     padding-right: 72px;
     max-width: 1248px; }
+    @media (max-width: 767px) {
+      .landing-layout .container {
+        padding-left: 24px;
+        padding-right: 24px; } }
 
 .align-right,
 .align-left {
@@ -1320,14 +1367,19 @@ form.success .msg-success {
   justify-content: space-between;
   padding: var(--indent);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%); }
-  .landing-layout #header {
+  .landing-layout #header,
+  .subscribe-layout #header {
     padding: 0;
-    background: none; }
-    .landing-layout #header .logo {
+    background: none;
+    pointer-events: none; }
+    .landing-layout #header .logo,
+    .subscribe-layout #header .logo {
       background: none; }
-      .landing-layout #header .logo svg {
+      .landing-layout #header .logo svg,
+      .subscribe-layout #header .logo svg {
         display: block; }
-    .landing-layout #header .container {
+    .landing-layout #header .container,
+    .subscribe-layout #header .container {
       min-height: 120px;
       padding-top: 36px;
       padding-bottom: 36px;
@@ -1335,15 +1387,26 @@ form.success .msg-success {
       align-items: center;
       justify-content: space-between; }
     .landing-layout #header.black-style .instagram svg path,
-    .landing-layout #header.black-style .menu-icon svg path {
+    .landing-layout #header.black-style .menu-icon svg path,
+    .subscribe-layout #header.black-style .instagram svg path,
+    .subscribe-layout #header.black-style .menu-icon svg path {
       fill: black; }
     .landing-layout #header.black-style .logo svg circle,
-    .landing-layout #header.black-style .logo svg path {
+    .landing-layout #header.black-style .logo svg path,
+    .subscribe-layout #header.black-style .logo svg circle,
+    .subscribe-layout #header.black-style .logo svg path {
       fill: black; }
+    @media (max-width: 767px) {
+      .landing-layout #header .container,
+      .subscribe-layout #header .container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        min-height: 72px; } }
 
 .instagram {
   width: 24px;
-  height: 24px; }
+  height: 24px;
+  pointer-events: all; }
   .instagram svg {
     display: block;
     width: 100%;
@@ -1353,7 +1416,8 @@ form.success .msg-success {
 
 .menu-icon {
   width: 24px;
-  height: 24px; }
+  height: 24px;
+  pointer-events: all; }
   .menu-icon svg {
     display: block;
     width: 100%;
@@ -1369,6 +1433,7 @@ form.success .msg-success {
   height: 48px;
   font-size: 0;
   line-height: 0;
+  pointer-events: all;
   transform: translate(-50%, -50%);
   transition: 0.3s ease;
   transition-property: opacity, transform;
@@ -1382,6 +1447,15 @@ form.success .msg-success {
   .logo.hidden {
     opacity: 0;
     transform: translate(-50%, -100%); }
+  @media (max-width: 767px) {
+    .landing-layout .logo,
+    .subscribe-layout .logo {
+      height: 32px;
+      width: 128px; }
+      .landing-layout .logo svg,
+      .subscribe-layout .logo svg {
+        width: 100%;
+        height: 100%; } }
 
 .gender {
   display: flex;
@@ -1836,7 +1910,9 @@ form.success .msg-success {
     align-items: center;
     justify-content: center; }
     #main.msg-layout .container {
-      max-width: 360px; }
+      max-width: 360px;
+      display: block !important;
+      height: auto !important; }
     #main.msg-layout svg {
       display: block;
       margin: 0 auto 24px; }
@@ -2510,7 +2586,7 @@ form.success .msg-success {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 96px; }
+    padding-top: 72px; }
   #bottom .subscribe {
     background: none;
     backdrop-filter: none; }
@@ -2539,6 +2615,21 @@ form.success .msg-success {
       background-color: white !important; }
   #bottom .logo {
     background-image: url(../images/logo.svg); }
+  #bottom .submit {
+    position: fixed;
+    left: 50%;
+    bottom: var(--indent);
+    opacity: 0;
+    z-index: 6;
+    transform: translate(-50%, 144px);
+    transition-delay: 0.3s, 0.3s, 0;
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease; }
+    #bottom .submit.static {
+      position: absolute;
+      bottom: 24px; }
+  .scrolling #bottom .submit {
+    opacity: 1;
+    transform: translate(-50%, 0); }
 
 .description {
   width: 100%;

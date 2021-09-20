@@ -756,8 +756,48 @@ form.success .msg-success {
       line-height: 24px;
     }
   }
+}
 
-  .subscribe-layout & {
-    background-color: black(.3);
+.gender-choice {
+  position: absolute;
+  top: -72px;
+  left: 50%;
+  padding-left: 144px;
+  padding-right: 72px;
+  max-width: 1248px;
+  width: 100%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 5;
+    margin-right: 24px;
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+      &:checked + span {
+        cursor: default;
+        color: black;
+      }
+    }
+    span {
+      display: block;
+      color: $gray;
+      cursor: pointer;
+      z-index: 1;
+      position: relative;
+      transition: color $animation-speed ease;
+    }
   }
 }

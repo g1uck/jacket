@@ -42,29 +42,31 @@ window.addEventListener("load", function () {
 
   let app = document.getElementById('welcom')
 
-  let typewriter = new Typewriter(app, {
-    loop: false,
-    delay: 50,
-  })
+  if (app) {
+    let typewriter = new Typewriter(app, {
+      loop: false,
+      delay: 50,
+    })
+  
+    typewriter
+      .typeString('<span>Rethinking the form.</span> The form is partly reflecting the times and the circumstances we live in. Getting a new form to existing things means keeping up with the changes around us. We feel the time, therefore have translated a <span>new aesthetics</span> into our brand DNA.')
+      .start()
+  }
 
-  typewriter
-    .typeString('<span>Rethinking the form.</span> The form is partly reflecting the times and the circumstances we live in. Getting a new form to existing things means keeping up with the changes around us. We feel the time, therefore have translated a <span>new aesthetics</span> into our brand DNA.')
-    .start()
-
-  var wow = new WOW({
-    boxClass: 'effect', // animated element css class (default is wow)
-    animateClass: 'animated', // animation css class (default is animated)
-    offset: 0, // distance to the element when triggering the animation (default is 0)
-    mobile: false, // trigger animations on mobile devices (default is true)
-    live: true, // act on asynchronously loaded content (default is true)
-    callback: function (box) {
-      // the callback is fired every time an animation is started
-      // the argument that is passed in is the DOM node being animated
-    },
-    scrollContainer: null, // optional scroll container selector, otherwise use window,
-    resetAnimation: true, // reset animation on end (default is true)
-  })
-  wow.init()
+  // var wow = new WOW({
+  //   boxClass: 'effect', // animated element css class (default is wow)
+  //   animateClass: 'animated', // animation css class (default is animated)
+  //   offset: 0, // distance to the element when triggering the animation (default is 0)
+  //   mobile: false, // trigger animations on mobile devices (default is true)
+  //   live: true, // act on asynchronously loaded content (default is true)
+  //   callback: function (box) {
+  //     // the callback is fired every time an animation is started
+  //     // the argument that is passed in is the DOM node being animated
+  //   },
+  //   scrollContainer: null, // optional scroll container selector, otherwise use window,
+  //   resetAnimation: true, // reset animation on end (default is true)
+  // })
+  // wow.init()
 
   setTimeout(function () {
     if (getCookie('policy') === undefined) {
@@ -347,10 +349,15 @@ let startBox = document.getElementById('promo')
 let endBox = document.querySelector('.description')
 let gallery = document.querySelector('.swiper')
 let header = document.getElementById('header')
+let scrollButton = document.querySelector('#bottom .submit')
 
 function initSwiperControls() {
+  if (!gallery) return
+  
   let startTop = startBox.getBoundingClientRect()
   let endTop = endBox.getBoundingClientRect()
+  let bottom = footer.getBoundingClientRect()
+
   startTop.height + startTop.top - 144 <= 0 && endTop.top - window.screen.height >= 0 ?
     gallery.classList.remove('hidden-controls') : 
     gallery.classList.add('hidden-controls')
@@ -360,6 +367,9 @@ function initSwiperControls() {
 
   startTop.height + startTop.top - 264 <= 0 ?
     mute.classList.add('hidden') : mute.classList.remove('hidden')
+
+  window.scrollY + document.body.clientHeight >= document.documentElement.scrollHeight - 216 ?
+    scrollButton.classList.add('static') : scrollButton.classList.remove('static')
 }
 
 function isInViewport(el) {
@@ -389,21 +399,21 @@ function initLogoChange() {
 
 // Product
 
-let colorParam = document.querySelectorAll('.color-style input')
-let productImgs = document.querySelectorAll('.product img')
+// let colorParam = document.querySelectorAll('.color-style input')
+// let productImgs = document.querySelectorAll('.product img')
 
-colorParam.forEach(function (color, index) {
-  color.addEventListener('change', function () {
-    let colorId = color.getAttribute('data-id')
-    let productImg = document.getElementById(colorId)
-    productImg.classList.add('display')
-    setTimeout(function () {
-      productImgs.forEach(function (img, imgIndex) {
-        if (colorId != img.getAttribute('id')) img.classList.remove('display')
-      })
-    }, 200)
-  })
-})
+// colorParam.forEach(function (color, index) {
+//   color.addEventListener('change', function () {
+//     let colorId = color.getAttribute('data-id')
+//     let productImg = document.getElementById(colorId)
+//     productImg.classList.add('display')
+//     setTimeout(function () {
+//       productImgs.forEach(function (img, imgIndex) {
+//         if (colorId != img.getAttribute('id')) img.classList.remove('display')
+//       })
+//     }, 200)
+//   })
+// })
 
 // Catalog
 
@@ -447,15 +457,17 @@ if (bodyElem.classList.contains('home-layout')) grained("#wrapper", options)
 let video = document.getElementById('video')
 let mute = document.getElementById('muted')
 
-mute.addEventListener('click', function(e) {
-  video.muted = !video.muted
-  mute.classList.toggle('on')
-})
+if (video) {
+  mute.addEventListener('click', function(e) {
+    video.muted = !video.muted
+    mute.classList.toggle('on')
+  })
+}
 
 // Cookie
 
 let cookieBox = document.getElementById('cookie')
-let accept = cookieBox.querySelector('.submit')
+let accept
 
 function setCookie(name, value, options = {}) {
 
@@ -491,25 +503,50 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-accept.addEventListener('click', function (e) {
-  e.preventDefault()
-  setCookie('policy', true, {secure: true, 'max-age': 604800})
-  cookieBox.classList.remove('display')
-})
+if (cookieBox) {
+  accept = cookieBox.querySelector('.submit')
+
+  accept.addEventListener('click', function (e) {
+    e.preventDefault()
+    setCookie('policy', true, {secure: true, 'max-age': 604800})
+    cookieBox.classList.remove('display')
+  })
+}
 
 // Product Gallery
 
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  loop: true,
-  lazy: true,
-  effect: "fade",
-  slidesPerView: 1,
-  spaceBetween: 0,
+const product = document.querySelector('.product')
 
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
+if (product) {
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    loop: true,
+    lazy: true,
+    effect: "fade",
+    slidesPerView: 1,
+    spaceBetween: 0,
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+  
+  // Filter
+  
+  let filterInputs = document.querySelectorAll('.product input')
+  let checked = '';
+  
+  filterInputs.forEach(function (input) {
+    input.addEventListener('change', function () {
+      filterInputs.forEach(function (check) {
+        if (check.checked == true) {
+          checked += check.value
+        }
+      })
+      swiper.removeAllSlides()
+      checked = ''
+    })
+  })
+}

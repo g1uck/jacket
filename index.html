@@ -95,6 +95,14 @@
         </div>
         <main id="main">
             <div class="product">
+                <div class="gender-choice">
+                    <label>
+                        <input checked type="radio" name="gender" value="jacket_man" id=""><span>man</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="jacket_woman" id=""><span>woman</span>
+                    </label>
+                </div>
                 <!-- Slider main container -->
                 <div class="swiper hidden-controls">
                     <!-- Additional required wrapper -->
@@ -187,27 +195,27 @@
                         <div data-title="Jacket Сolor" class="box">
                             <div class="parameters color-style">
                                 <label data-tippy-content="Black" data-tippy-arrow="false" data-tippy-placement="bottom">
-                                    <input checked type="radio" name="color_jacket" id=""><span style="background-color: black;"></span>
+                                    <input checked type="radio" name="color_jacket" value="_black" id=""><span style="background-color: black;"></span>
                                 </label>
                                 <label data-tippy-content="Gray" data-tippy-arrow="false" data-tippy-placement="bottom">
-                                    <input type="radio" name="color_jacket" id=""><span style="background-color: #8B8B8B;"></span>
+                                    <input type="radio" name="color_jacket" value="_gray" id=""><span style="background-color: #8B8B8B;"></span>
                                 </label>
                                 <label data-tippy-content="White" data-tippy-arrow="false" data-tippy-placement="bottom">
-                                    <input type="radio" name="color_jacket" id=""><span style="background-color: #F3F3F3;"></span>
+                                    <input type="radio" name="color_jacket" value="_white" id=""><span style="background-color: #F3F3F3;"></span>
                                 </label>
                             </div>
                         </div>
-                        <a href="#" class="submit">go to catalog</a>
+                        <!-- <a href="#" class="submit">go to catalog</a> -->
                         <div data-title="Glass Color" class="box">
                             <div class="parameters color-style">
                                 <label data-tippy-content="Transparent" data-tippy-arrow="false" data-tippy-placement="bottom">
-                                    <input data-id="transparent" checked type="radio" name="color_glass" id=""><span style="background-color: #EDEDED;"></span>
+                                    <input checked type="radio" name="color_glass" value="_transparent" id=""><span style="background-color: #EDEDED;"></span>
                                 </label>
                                 <label data-tippy-content="Silver" data-tippy-arrow="false" data-tippy-placement="bottom">
-                                    <input data-id="silver" type="radio" name="color_glass" id=""><span style="background-color: #8B8B8B;"></span>
+                                    <input type="radio" name="color_glass" value="_silver" id=""><span style="background-color: #8B8B8B;"></span>
                                 </label>
                                 <label data-tippy-content="Golden" data-tippy-arrow="false" data-tippy-placement="bottom">
-                                    <input data-id="gold" type="radio" name="color_glass" id=""><span style="background-color: #CBB700;"></span>
+                                    <input type="radio" name="color_glass" value="_golden" id=""><span style="background-color: #CBB700;"></span>
                                 </label>
                             </div>
                         </div>
@@ -272,6 +280,7 @@
                         </div>
                     </div>
                 </form>
+                <a href="#" class="submit">go to catalog</a>
             </div>
             <footer id="footer">
                 <div class="container">

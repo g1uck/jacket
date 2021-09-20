@@ -53,10 +53,19 @@ body {
     }
   }
   &.subscribe-layout {
-    background: $base-background-color url(../images/bg.webp) no-repeat 50% 0 / 100% auto;
+    background: $base-background-color url(../images/desktop.webp) no-repeat 50% 0 / cover;
   }
   &.empty-layout {
     min-width: 320px;
+  }
+  @include media('<tablet') {
+    &.landing-layout, {
+      min-width: 360px;
+    }
+    &.subscribe-layout {
+      min-width: 360px;
+      background-image: url(../images/mobile.webp);
+    }
   }
   .mobile &.home-layout {
     background-position: 0 0;
