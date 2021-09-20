@@ -365,8 +365,8 @@ function initSwiperControls() {
   startTop.height + startTop.top - 48 <= 0 ?
     header.classList.add('black-style') : header.classList.remove('black-style')
 
-  startTop.height + startTop.top - 264 <= 0 ?
-    mute.classList.add('hidden') : mute.classList.remove('hidden')
+  startTop.height + startTop.top - 336 <= 0 ?
+    startBox.classList.add('hidden') : startBox.classList.remove('hidden')
 
   window.scrollY + document.body.clientHeight >= document.documentElement.scrollHeight - 216 ?
     scrollButton.classList.add('static') : scrollButton.classList.remove('static')
@@ -456,12 +456,17 @@ if (bodyElem.classList.contains('home-layout')) grained("#wrapper", options)
 
 let video = document.getElementById('video')
 let mute = document.getElementById('muted')
+let htmlTag = document.querySelector('html')
 
 if (video) {
   mute.addEventListener('click', function(e) {
     video.muted = !video.muted
     mute.classList.toggle('on')
   })
+
+  if (htmlTag.classList.contains('mobile')) {
+    video.pause()
+  }
 }
 
 // Cookie
@@ -516,9 +521,10 @@ if (cookieBox) {
 // Product Gallery
 
 const product = document.querySelector('.product')
+let swiperBox = document.querySelector('.swiper')
 
 if (product) {
-  const swiper = new Swiper('.swiper', {
+  const swiper = new Swiper(swiperBox, {
     // Optional parameters
     loop: true,
     lazy: true,
@@ -545,7 +551,74 @@ if (product) {
           checked += check.value
         }
       })
+      swiperBox.style.height = swiper.height + 'px'
       swiper.removeAllSlides()
+      swiper.appendSlide([
+        '<div class="swiper-slide">\
+          <img data-src="images/'+ checked +'_02.webp" class="swiper-lazy" />\
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
+        </div>',
+        '<div class="swiper-slide">\
+          <img data-src="images/'+ checked +'_03.webp" class="swiper-lazy" />\
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
+        </div>',
+        '<div class="swiper-slide">\
+          <img data-src="images/'+ checked +'_04.webp" class="swiper-lazy" />\
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
+        </div>',
+        '<div class="swiper-slide">\
+          <img data-src="images/'+ checked +'_01.webp" class="swiper-lazy" />\
+          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+              <circle cx="9" cy="9" r="1" fill="white" />\
+              <circle cx="5" cy="9" r="1" fill="white" />\
+              <circle cx="13" cy="9" r="1" fill="white" />\
+              <circle cx="9" cy="13" r="1" fill="white" />\
+              <circle cx="9" cy="5" r="1" fill="white" />\
+            </svg>\
+          </div>\
+          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+              <circle cx="9" cy="9" r="1" fill="white" />\
+              <circle cx="5" cy="9" r="1" fill="white" />\
+              <circle cx="13" cy="9" r="1" fill="white" />\
+              <circle cx="9" cy="13" r="1" fill="white" />\
+              <circle cx="9" cy="5" r="1" fill="white" />\
+            </svg>\
+          </div>\
+          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+              <circle cx="9" cy="9" r="1" fill="white" />\
+              <circle cx="5" cy="9" r="1" fill="white" />\
+              <circle cx="13" cy="9" r="1" fill="white" />\
+              <circle cx="9" cy="13" r="1" fill="white" />\
+              <circle cx="9" cy="5" r="1" fill="white" />\
+            </svg>\
+          </div>\
+          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+              <circle cx="9" cy="9" r="1" fill="white" />\
+              <circle cx="5" cy="9" r="1" fill="white" />\
+              <circle cx="13" cy="9" r="1" fill="white" />\
+              <circle cx="9" cy="13" r="1" fill="white" />\
+              <circle cx="9" cy="5" r="1" fill="white" />\
+            </svg>\
+          </div>\
+          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+              <circle cx="9" cy="9" r="1" fill="white" />\
+              <circle cx="5" cy="9" r="1" fill="white" />\
+              <circle cx="13" cy="9" r="1" fill="white" />\
+              <circle cx="9" cy="13" r="1" fill="white" />\
+              <circle cx="9" cy="5" r="1" fill="white" />\
+            </svg>\
+          </div>\
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
+        </div>'
+       ])
+      swiper.lazy.load()
+      swiper.update()
+      // swiperBox.removeAttribute('style')
       checked = ''
     })
   })

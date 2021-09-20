@@ -1285,12 +1285,10 @@ form.success .msg-success {
 .gender-choice {
   position: absolute;
   top: -72px;
-  left: 50%;
+  left: 0;
   padding-left: 144px;
   padding-right: 72px;
-  max-width: 1248px;
   width: 100%;
-  transform: translateX(-50%);
   display: flex;
   flex-wrap: wrap; }
   .gender-choice label {
@@ -1384,6 +1382,7 @@ form.success .msg-success {
       padding-top: 36px;
       padding-bottom: 36px;
       display: flex;
+      max-width: 100%;
       align-items: center;
       justify-content: space-between; }
     .landing-layout #header.black-style .instagram svg path,
@@ -1536,7 +1535,13 @@ form.success .msg-success {
   .landing-layout #promo {
     padding: 0;
     height: 100vh;
-    background: url(../images/poster.webp) no-repeat 50% 50%/cover; }
+    background: #181F22 url(../images/poster.webp) no-repeat 50% 50%/cover; }
+    @media (max-width: 767px) {
+      .landing-layout #promo {
+        height: calc(var(--vh) * 100);
+        background-image: url(../images/mobile.webp); }
+        .landing-layout #promo video {
+          display: none; } }
   #promo .container {
     height: 100%; }
   #promo video {
@@ -1546,6 +1551,12 @@ form.success .msg-success {
     width: 100%;
     height: 100%;
     object-fit: cover; }
+  #promo.hidden #muted {
+    pointer-events: none; }
+    #promo.hidden #muted svg {
+      fill: transparent !important; }
+  #promo.hidden .scrolldown {
+    opacity: 0; }
 
 #muted {
   position: absolute;
@@ -1570,6 +1581,9 @@ form.success .msg-success {
     pointer-events: none; }
     #muted.hidden svg {
       fill: transparent !important; }
+  @media (max-width: 767px) {
+    #muted {
+      display: none; } }
 
 .welcom {
   width: 100%;
@@ -1616,7 +1630,8 @@ form.success .msg-success {
   width: 48px;
   cursor: default;
   margin-top: 2.7777777777777777%;
-  transform: translateX(-50%); }
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease; }
   .scrolldown span {
     text-align: center;
     letter-spacing: 0.5em;
@@ -1636,6 +1651,11 @@ form.success .msg-success {
   .landing-layout .scrolldown {
     top: auto;
     bottom: var(--indent); }
+    @media (max-width: 767px) {
+      .landing-layout .scrolldown {
+        display: none; }
+        .landing-layout .scrolldown svg {
+          animation: none; } }
 
 .product {
   width: 100%;
@@ -1721,9 +1741,9 @@ form.success .msg-success {
         width: 100%;
         height: 100%; }
     .product .swiper .swiper-button-prev {
-      left: calc(50% - 1104px / 2); }
+      left: 72px; }
     .product .swiper .swiper-button-next {
-      right: calc(50% - 1104px / 2); }
+      right: 72px; }
     .product .swiper .point {
       position: absolute;
       width: 18px;
@@ -1872,6 +1892,7 @@ form.success .msg-success {
     .landing-layout .panel .container {
       display: flex;
       gap: 0;
+      max-width: 100%;
       justify-content: space-between; }
     .landing-layout .panel .submit {
       padding-left: 34px;

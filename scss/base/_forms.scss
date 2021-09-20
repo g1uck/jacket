@@ -761,12 +761,10 @@ form.success .msg-success {
 .gender-choice {
   position: absolute;
   top: -72px;
-  left: 50%;
+  left: 0;
   padding-left: 144px;
   padding-right: 72px;
-  max-width: 1248px;
   width: 100%;
-  transform: translateX(-50%);
   display: flex;
   flex-wrap: wrap;
   label {
