@@ -523,10 +523,30 @@ $media-expressions: (
     margin-bottom: 12px;
   }
 
+  .temp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 120px;
+    padding: 0 16%;
+    pointer-events: none;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
   .landing-layout & {
     padding-bottom: 120px;
     @include media('<tablet') {
       padding-bottom: 144px;
+      .temp {
+        top: 100px;
+        bottom: 144px;
+        padding: 0 12%;
+      }
       .swiper {
         .swiper-slide {
           padding: 0 12%;
@@ -539,6 +559,7 @@ $media-expressions: (
 
   .swiper {
     overflow: visible;
+    transition: opacity $animation-speed ease;
     .swiper-slide {
       position: relative;
       padding: 0 16%;
@@ -580,6 +601,7 @@ $media-expressions: (
       margin: 0;
       box-shadow: 0 0 0 rgba($main, 0.5);
       animation: pulseShadow 1.5s infinite;
+      display: none; // temp
       svg {
         display: block;
         width: 100%;
@@ -615,6 +637,9 @@ $media-expressions: (
         bottom: 12.9%;
         margin-right: -6%;
       }
+    }
+    &.hidden {
+      opacity: 0;
     }
     @include media('≥tablet') {
       &.hidden-controls {
@@ -1813,12 +1838,17 @@ $media-expressions: (
     column-gap: var(--indent);
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: -48px;
-    &:last-child {margin-bottom: 0;}
     @include media('≥tablet') {
+      &:first-child .middle {padding-top: 144px;}
+      &:last-child {
+        margin-bottom: 0;
+        .middle {padding-bottom: 144px;}
+      }
       &:nth-child(even) {
         .image {order: 2;}
         .desc {order: 1;}
       }
+      .middle {padding: 192px 0;}
     }
   }
   .image {
@@ -1826,11 +1856,6 @@ $media-expressions: (
     overflow: hidden;
     position: relative;
     border-radius: 24px;
-    &::before {
-      content: '';
-      display: block;
-      padding-top: 100%;
-    }
   }
   .desc {
     display: flex;
@@ -1852,6 +1877,12 @@ $media-expressions: (
       margin: 0 0 48px;
       gap: 24px;
       grid-template-columns: repeat(1, 1fr);
+      &:last-child {margin: 0;}
+    }
+    .image::before {
+      content: '';
+      display: block;
+      padding-top: 100%;
     }
     .desc {
       text-align: center;

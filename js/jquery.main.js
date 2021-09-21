@@ -53,20 +53,20 @@ window.addEventListener("load", function () {
       .start()
   }
 
-  // var wow = new WOW({
-  //   boxClass: 'effect', // animated element css class (default is wow)
-  //   animateClass: 'animated', // animation css class (default is animated)
-  //   offset: 0, // distance to the element when triggering the animation (default is 0)
-  //   mobile: false, // trigger animations on mobile devices (default is true)
-  //   live: true, // act on asynchronously loaded content (default is true)
-  //   callback: function (box) {
-  //     // the callback is fired every time an animation is started
-  //     // the argument that is passed in is the DOM node being animated
-  //   },
-  //   scrollContainer: null, // optional scroll container selector, otherwise use window,
-  //   resetAnimation: true, // reset animation on end (default is true)
-  // })
-  // wow.init()
+  var wow = new WOW({
+    boxClass: 'effect', // animated element css class (default is wow)
+    animateClass: 'animated', // animation css class (default is animated)
+    offset: 0, // distance to the element when triggering the animation (default is 0)
+    mobile: false, // trigger animations on mobile devices (default is true)
+    live: true, // act on asynchronously loaded content (default is true)
+    callback: function (box) {
+      // the callback is fired every time an animation is started
+      // the argument that is passed in is the DOM node being animated
+    },
+    scrollContainer: null, // optional scroll container selector, otherwise use window,
+    resetAnimation: true, // reset animation on end (default is true)
+  })
+  if (promo) wow.init()
 
   setTimeout(function () {
     if (getCookie('policy') === undefined) {
@@ -555,6 +555,7 @@ if (product) {
   // Filter
   
   let filterInputs = document.querySelectorAll('.product input')
+  let tempImage = document.querySelector('.temp img')
   let checked = ''
   let backLock = ''
   
@@ -569,83 +570,89 @@ if (product) {
       let index = checked.lastIndexOf("_")
       backLock = checked.substring(0, index)
 
+      tempImage.src = 'images/filter/' + checked + '.webp'
+
       swiperBox.style.height = swiper.height + 'px'
-      swiper.removeAllSlides()
-      swiper.appendSlide([
-        '<div class="swiper-slide">\
-          <img data-src="images/filter/'+ backLock +'_180.webp" class="swiper-lazy" />\
-        </div>',
-        // '<div class="swiper-slide">\
-        //   <img data-src="images/'+ checked +'_03.webp" class="swiper-lazy" />\
-        // </div>',
-        // '<div class="swiper-slide">\
-        //   <img data-src="images/'+ checked +'_04.webp" class="swiper-lazy" />\
-        // </div>',
-        '<div class="swiper-slide">\
-          <img data-src="images/filter/'+ checked +'.webp" class="swiper-lazy" />\
-          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
-              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
-              <circle cx="9" cy="9" r="1" fill="white" />\
-              <circle cx="5" cy="9" r="1" fill="white" />\
-              <circle cx="13" cy="9" r="1" fill="white" />\
-              <circle cx="9" cy="13" r="1" fill="white" />\
-              <circle cx="9" cy="5" r="1" fill="white" />\
-            </svg>\
-          </div>\
-          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
-              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
-              <circle cx="9" cy="9" r="1" fill="white" />\
-              <circle cx="5" cy="9" r="1" fill="white" />\
-              <circle cx="13" cy="9" r="1" fill="white" />\
-              <circle cx="9" cy="13" r="1" fill="white" />\
-              <circle cx="9" cy="5" r="1" fill="white" />\
-            </svg>\
-          </div>\
-          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
-              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
-              <circle cx="9" cy="9" r="1" fill="white" />\
-              <circle cx="5" cy="9" r="1" fill="white" />\
-              <circle cx="13" cy="9" r="1" fill="white" />\
-              <circle cx="9" cy="13" r="1" fill="white" />\
-              <circle cx="9" cy="5" r="1" fill="white" />\
-            </svg>\
-          </div>\
-          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
-              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
-              <circle cx="9" cy="9" r="1" fill="white" />\
-              <circle cx="5" cy="9" r="1" fill="white" />\
-              <circle cx="13" cy="9" r="1" fill="white" />\
-              <circle cx="9" cy="13" r="1" fill="white" />\
-              <circle cx="9" cy="5" r="1" fill="white" />\
-            </svg>\
-          </div>\
-          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
-              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
-              <circle cx="9" cy="9" r="1" fill="white" />\
-              <circle cx="5" cy="9" r="1" fill="white" />\
-              <circle cx="13" cy="9" r="1" fill="white" />\
-              <circle cx="9" cy="13" r="1" fill="white" />\
-              <circle cx="9" cy="5" r="1" fill="white" />\
-            </svg>\
-          </div>\
-          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
-              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
-              <circle cx="9" cy="9" r="1" fill="white" />\
-              <circle cx="5" cy="9" r="1" fill="white" />\
-              <circle cx="13" cy="9" r="1" fill="white" />\
-              <circle cx="9" cy="13" r="1" fill="white" />\
-              <circle cx="9" cy="5" r="1" fill="white" />\
-            </svg>\
-          </div>\
-        </div>'
-       ])
-      swiper.lazy.load()
-      swiper.update()
-      swiper.slideTo(0)
+      swiperBox.classList.add('hidden')
       setTimeout(function(){
-        swiperBox.removeAttribute('style')
-      }, 100)
-      checked = ''
+        swiper.removeAllSlides()
+        swiper.appendSlide([
+          '<div class="swiper-slide">\
+            <img data-src="images/filter/'+ backLock +'_180.webp" class="swiper-lazy" />\
+          </div>',
+          // '<div class="swiper-slide">\
+          //   <img data-src="images/'+ checked +'_03.webp" class="swiper-lazy" />\
+          // </div>',
+          // '<div class="swiper-slide">\
+          //   <img data-src="images/'+ checked +'_04.webp" class="swiper-lazy" />\
+          // </div>',
+          '<div class="swiper-slide">\
+            <img data-src="images/filter/'+ checked +'.webp" class="swiper-lazy" />\
+            <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+                <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+                <circle cx="9" cy="9" r="1" fill="white" />\
+                <circle cx="5" cy="9" r="1" fill="white" />\
+                <circle cx="13" cy="9" r="1" fill="white" />\
+                <circle cx="9" cy="13" r="1" fill="white" />\
+                <circle cx="9" cy="5" r="1" fill="white" />\
+              </svg>\
+            </div>\
+            <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+                <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+                <circle cx="9" cy="9" r="1" fill="white" />\
+                <circle cx="5" cy="9" r="1" fill="white" />\
+                <circle cx="13" cy="9" r="1" fill="white" />\
+                <circle cx="9" cy="13" r="1" fill="white" />\
+                <circle cx="9" cy="5" r="1" fill="white" />\
+              </svg>\
+            </div>\
+            <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+                <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+                <circle cx="9" cy="9" r="1" fill="white" />\
+                <circle cx="5" cy="9" r="1" fill="white" />\
+                <circle cx="13" cy="9" r="1" fill="white" />\
+                <circle cx="9" cy="13" r="1" fill="white" />\
+                <circle cx="9" cy="5" r="1" fill="white" />\
+              </svg>\
+            </div>\
+            <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+                <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+                <circle cx="9" cy="9" r="1" fill="white" />\
+                <circle cx="5" cy="9" r="1" fill="white" />\
+                <circle cx="13" cy="9" r="1" fill="white" />\
+                <circle cx="9" cy="13" r="1" fill="white" />\
+                <circle cx="9" cy="5" r="1" fill="white" />\
+              </svg>\
+            </div>\
+            <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+                <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+                <circle cx="9" cy="9" r="1" fill="white" />\
+                <circle cx="5" cy="9" r="1" fill="white" />\
+                <circle cx="13" cy="9" r="1" fill="white" />\
+                <circle cx="9" cy="13" r="1" fill="white" />\
+                <circle cx="9" cy="5" r="1" fill="white" />\
+              </svg>\
+            </div>\
+            <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+                <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+                <circle cx="9" cy="9" r="1" fill="white" />\
+                <circle cx="5" cy="9" r="1" fill="white" />\
+                <circle cx="13" cy="9" r="1" fill="white" />\
+                <circle cx="9" cy="13" r="1" fill="white" />\
+                <circle cx="9" cy="5" r="1" fill="white" />\
+              </svg>\
+            </div>\
+          </div>'
+        ])
+        swiper.lazy.load()
+        swiper.update()
+        swiper.slideTo(0)
+        setTimeout(function() {
+          swiperBox.removeAttribute('style')
+          swiperBox.classList.remove('hidden')
+          checked = ''
+        }, 300)
+      }, 300)
     })
   })
 }

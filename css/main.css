@@ -1791,18 +1791,35 @@ form.success .msg-success {
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 12px; }
+  .product .temp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 120px;
+    padding: 0 16%;
+    pointer-events: none; }
+    .product .temp img {
+      display: block;
+      width: 100%;
+      height: auto; }
   .landing-layout .product {
     padding-bottom: 120px; }
     @media (max-width: 767px) {
       .landing-layout .product {
         padding-bottom: 144px; }
+        .landing-layout .product .temp {
+          top: 100px;
+          bottom: 144px;
+          padding: 0 12%; }
         .landing-layout .product .swiper .swiper-slide {
           padding: 0 12%;
           background-color: white; }
         .landing-layout .product .swiper .swiper-lazy-preloader {
           display: none !important; } }
   .product .swiper {
-    overflow: visible; }
+    overflow: visible;
+    transition: opacity 0.3s ease; }
     .product .swiper .swiper-slide {
       position: relative;
       padding: 0 16%; }
@@ -1840,7 +1857,8 @@ form.success .msg-success {
       cursor: pointer;
       margin: 0;
       box-shadow: 0 0 0 rgba(0, 209, 255, 0.5);
-      animation: pulseShadow 1.5s infinite; }
+      animation: pulseShadow 1.5s infinite;
+      display: none; }
       .product .swiper .point svg {
         display: block;
         width: 100%;
@@ -1869,6 +1887,8 @@ form.success .msg-success {
         right: 50%;
         bottom: 12.9%;
         margin-right: -6%; }
+    .product .swiper.hidden {
+      opacity: 0; }
     @media (min-width: 768px) {
       .product .swiper.hidden-controls .swiper-button-prev,
       .product .swiper.hidden-controls .swiper-button-next {
@@ -2901,22 +2921,24 @@ form.success .msg-success {
     column-gap: var(--indent);
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: -48px; }
-    .description .item:last-child {
-      margin-bottom: 0; }
     @media (min-width: 768px) {
+      .description .item:first-child .middle {
+        padding-top: 144px; }
+      .description .item:last-child {
+        margin-bottom: 0; }
+        .description .item:last-child .middle {
+          padding-bottom: 144px; }
       .description .item:nth-child(even) .image {
         order: 2; }
       .description .item:nth-child(even) .desc {
-        order: 1; } }
+        order: 1; }
+      .description .item .middle {
+        padding: 192px 0; } }
   .description .image {
     display: block;
     overflow: hidden;
     position: relative;
     border-radius: 24px; }
-    .description .image::before {
-      content: '';
-      display: block;
-      padding-top: 100%; }
   .description .desc {
     display: flex;
     align-items: center;
@@ -2935,6 +2957,12 @@ form.success .msg-success {
         margin: 0 0 48px;
         gap: 24px;
         grid-template-columns: repeat(1, 1fr); }
+        .description .item:last-child {
+          margin: 0; }
+      .description .image::before {
+        content: '';
+        display: block;
+        padding-top: 100%; }
       .description .desc {
         text-align: center; } }
 
