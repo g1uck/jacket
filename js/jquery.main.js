@@ -574,7 +574,6 @@ if (product) {
       swiper.appendSlide([
         '<div class="swiper-slide">\
           <img data-src="images/filter/'+ backLock +'_180.webp" class="swiper-lazy" />\
-          <div class="swiper-lazy-preloader"></div>\
         </div>',
         // '<div class="swiper-slide">\
         //   <img data-src="images/'+ checked +'_03.webp" class="swiper-lazy" />\
@@ -584,7 +583,6 @@ if (product) {
         // </div>',
         '<div class="swiper-slide">\
           <img data-src="images/filter/'+ checked +'.webp" class="swiper-lazy" />\
-          <div class="swiper-lazy-preloader"></div>\
           <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
               <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
               <circle cx="9" cy="9" r="1" fill="white" />\
