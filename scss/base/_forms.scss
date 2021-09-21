@@ -767,6 +767,34 @@ form.success .msg-success {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  z-index: 10;
+  transition: opacity $animation-speed ease;
+  @include media('≥tablet') {
+    &.fixed {
+      top: var(--indent);
+      position: fixed;
+      &:not(.display) {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+    &.display {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  @include media('<tablet') {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 0 0 76px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    label {
+      margin: 0 12px;
+    }
+  }
   label {
     font-weight: 600;
     font-size: 14px;

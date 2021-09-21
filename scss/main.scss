@@ -96,6 +96,7 @@ $media-expressions: (
     padding: 0;
     background: none;
     pointer-events: none;
+    transition: background-color $animation-speed ease;
     .logo {
       background: none;
       svg {display: block;}
@@ -109,15 +110,28 @@ $media-expressions: (
       align-items: center;
       justify-content: space-between;
     }
-    &.black-style {
-      .instagram svg path,
-      .menu-icon svg path {fill: black;}
-      .logo svg {
-        circle,
-        path {fill: black;}
+    @include media('≥tablet') {
+      &.black-style {
+        .instagram svg path,
+        .menu-icon svg path {fill: black;}
+        .logo svg {
+          circle,
+          path {fill: black;}
+        }
+      }
+      &.hidden .logo {
+        opacity: 0;
+        transform: translate(-50%, -100%);
       }
     }
     @include media('<tablet') {
+      background-color: black;
+      transition: $animation-speed ease;
+      transition-property: opacity, transform;
+      &.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
       .container {
         padding-top: 20px;
         padding-bottom: 20px;
@@ -269,14 +283,54 @@ $media-expressions: (
     width: 100%;
     height: auto;
   }
+  .middle,
+  .play {display: none;}
   .landing-layout & {
     padding: 0;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #181F22 url(../images/poster.webp) no-repeat 50% 50% / cover;
     @include media('<tablet') {
       height: calc(var(--vh) * 100);
       video {display: none;}
-      background-image: url(../images/mobile.webp);
+      // background-image: url(../images/mobile.webp);
+      .middle, .play {display: block;}
+    }
+    .middle {
+      width: 100%;
+      padding: 0 48px 72px;
+      position: relative;
+      strong,
+      .back {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 30px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        color: $main;
+      }
+      strong {
+        position: absolute;
+        left: var(--indent);
+        right: var(--indent);
+        top: 0;
+      }
+      .back {opacity: 0;}
+    }
+    .play {
+      position: absolute;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      padding: 18px;
+      background-color: $main;
+      box-shadow: 0px 0px 5px $main;
+      svg {display: block;}
     }
   }
   .container {height: 100%;}
@@ -471,6 +525,16 @@ $media-expressions: (
 
   .landing-layout & {
     padding-bottom: 120px;
+    @include media('<tablet') {
+      padding-bottom: 144px;
+      .swiper {
+        .swiper-slide {
+          padding: 0 12%;
+          background-color: white;
+        }
+        .swiper-lazy-preloader {display: none !important;}
+      }
+    }
   }
 
   .swiper {
@@ -522,37 +586,52 @@ $media-expressions: (
         height: 100%;
       }
       &:nth-of-type(1) {
-        left: 50%;
-        top: 6.9%;
-        margin-left: -1.1%;
+        right: 50%;
+        top: 11.2%;
+        margin-right: -9.6%;
       }
       &:nth-of-type(2) {
         left: 50%;
-        top: 35.9%;
-        margin-left: -9.6%;
+        top: 18.9%;
+        margin-left: -1.6%;
       }
       &:nth-of-type(3) {
         right: 50%;
-        top: 38%;
-        margin-right: -19.9%;
+        top: 45.7%;
+        margin-right: -9.9%;
       }
       &:nth-of-type(4) {
         right: 50%;
-        top: 57%;
-        margin-right: -15%;
+        bottom: 22.5%;
+        margin-right: -28.1%;
       }
       &:nth-of-type(5) {
         left: 50%;
-        bottom: 15.9%;
-        margin-left: -26.4%;
+        bottom: 25.6%;
+        margin-left: -26.6%;
+      }
+      &:nth-of-type(6) {
+        right: 50%;
+        bottom: 12.9%;
+        margin-right: -6%;
       }
     }
-    &.hidden-controls {
+    @include media('≥tablet') {
+      &.hidden-controls {
+        .swiper-button-prev,
+        .swiper-button-next {
+          opacity: 0 !important;
+          pointer-events: none;
+        }
+      }
+    }
+    @include media('<tablet') {
       .swiper-button-prev,
       .swiper-button-next {
-        opacity: 0 !important;
-        pointer-events: none;
+        position: absolute;
       }
+      .swiper-button-prev {left: 24px;}
+      .swiper-button-next {right: 24px;}
     }
   }
 }
@@ -596,7 +675,14 @@ $media-expressions: (
   transition-property: opacity, transform;
   background: linear-gradient(360deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 84.58%);
   transform: translateY(100%);
-  &.bottom {position: absolute;}
+  &.bottom {
+    position: absolute;
+    transition-duration: $animation-speed;
+    &.hidden {
+      transition-duration: $animation-speed;
+      opacity: 0;
+    }
+  }
   .container {
     display: grid;
     column-gap: var(--indent);
@@ -679,7 +765,6 @@ $media-expressions: (
       line-height: 24px;
     }
   }
-
   .landing-layout & {
     background: none;
     .container {
@@ -700,6 +785,26 @@ $media-expressions: (
         left: auto;
         right: 0;
       }
+    }
+    @include media('<tablet') {
+      opacity: 1 !important;
+      transform: none !important;
+      padding: 0;
+      top: 48px;
+      bottom: 96px;
+      pointer-events: none;
+      position: absolute !important;
+      .container {
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .box {
+        pointer-events: all;
+        &::before {display: none;}
+      }
+      .parameters {padding: 0;}
     }
   }
 }
@@ -730,6 +835,9 @@ $media-expressions: (
   }
   .landing-layout & {
     padding-top: 120px;
+    @include media('<tablet') {
+      padding-top: 72px;
+    }
   }
   &.msg-layout {
     display: flex;
@@ -801,6 +909,43 @@ $media-expressions: (
   }
   .logo {background-image: url(../images/footer_logo.svg);}
   .align-right {align-items: center;}
+  @include media('<tablet') {
+    padding-bottom: 96px;
+    color: #181F22;
+    .container {
+      display: grid;
+      gap: 24px;
+      padding-top: var(--indent);
+      padding-bottom: 0;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .logo {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      order: 3;
+      display: block;
+      margin: 0 auto;
+      background-image: url(../images/logo_black.svg) !important;
+    }
+    .align-right {
+      order: 5;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .social {
+      padding: 0;
+      justify-content: center;
+      a {
+        margin: 0;
+        &:nth-child(-n+2) {display: none;}
+      }
+      svg path {fill: #181F22;}
+    }
+  }
 }
 
 .parameters {
@@ -984,12 +1129,43 @@ $media-expressions: (
     &:hover {color: $main;}
   }
   .active a {color: $main;}
+  @include media('<tablet') {
+    order: 1;
+    position: relative;
+    top: auto;
+    left: auto;
+    text-align: center;
+    ul {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    li {
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      color: #181F22;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .active a {color: $main;}
+  }
 }
 
 .pay-icon {
   display: block;
   padding: 4px 0;
   img {display: block;}
+  @include media('<tablet') {
+    order: 2;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../images/pay-icon_black.svg) no-repeat 50% 50% / contain;
+    img {opacity: 0;}
+  }
 }
 
 .short-contatcs {
@@ -998,10 +1174,28 @@ $media-expressions: (
   bottom: var(--indent);
   text-transform: none;
   letter-spacing: 0.02em;
+  @include media('<tablet') {
+    order: 4;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    font-weight: normal;
+    bottom: auto;
+    ul {
+      gap: 12px;
+    }
+    a {
+      color: $gray;
+      font-weight: normal;
+    }
+  }
 }
 
 .copyright {
   font-style: normal;
+  @include media('<tablet') {
+
+  }
 }
 
 .social {
@@ -1016,7 +1210,10 @@ $media-expressions: (
     transition-property: opacity;
     &:hover {opacity: 0.5;}
   }
-  svg {display: block;}
+  svg {
+    display: block;
+    path {fill: white;}
+  }
 }
 
 .fancybox__content.dialog {
@@ -1507,6 +1704,13 @@ $media-expressions: (
     transform: none;
     pointer-events: all;
   }
+  @include media('<tablet') {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    padding: 24px;
+  }
 }
 
 #bottom {
@@ -1551,15 +1755,47 @@ $media-expressions: (
     transform: translate(-50%, 144px);
     transition-delay: $animation-speed, $animation-speed, 0;
     transition: opacity $animation-speed * 2 ease, transform $animation-speed * 2 ease, box-shadow $animation-speed ease;
-    &.static {
-      position: absolute;
-      bottom: 24px;
+    @include media('≥tablet') {
+      &.static {
+        position: absolute;
+        bottom: 24px;
+      }
     }
   }
   .scrolling & {
     .submit {
       opacity: 1;
       transform: translate(-50%, 0);
+    }
+  }
+  @include media('<tablet') {
+    background: none;
+    height: auto;
+    & > .container {
+      height: 288px;
+      padding-top: 0;
+      background: url(../images/footer.webp) no-repeat 50% 50% / cover;
+    }
+    .subscribe {
+      padding-left: 0;
+      padding-right: 0;
+      height: auto;
+      padding-top: 96px;
+      header {
+        top: -60px;
+        strong {
+          font-size: 24px;
+          line-height: 36px;
+          &:nth-child(1) {
+            top: -36px;
+          }
+        }
+      }
+    }
+    .submit {
+      bottom: 24px;
+      z-index: 20;
+      width: calc(100% - 48px);
     }
   }
 }
@@ -1578,9 +1814,11 @@ $media-expressions: (
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: -48px;
     &:last-child {margin-bottom: 0;}
-    &:nth-child(even) {
-      .image {order: 2;}
-      .desc {order: 1;}
+    @include media('≥tablet') {
+      &:nth-child(even) {
+        .image {order: 2;}
+        .desc {order: 1;}
+      }
     }
   }
   .image {
@@ -1607,6 +1845,18 @@ $media-expressions: (
     margin-bottom: 12px;
   }
   p {margin: 0;}
+
+  @include media('<tablet') {
+    padding: 0;
+    .item {
+      margin: 0 0 48px;
+      gap: 24px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .desc {
+      text-align: center;
+    }
+  }
 }
 
 .empty-layout {

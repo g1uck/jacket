@@ -49,7 +49,7 @@ window.addEventListener("load", function () {
     })
   
     typewriter
-      .typeString('<span>Rethinking the form.</span> The form is partly reflecting the times and the circumstances we live in. Getting a new form to existing things means keeping up with the changes around us. We feel the time, therefore have translated a <span>new aesthetics</span> into our brand DNA.')
+      .typeString('TRANSFORM YOUR REALITY')
       .start()
   }
 
@@ -106,6 +106,13 @@ function panelScroll() {
   let rect = promo.getBoundingClientRect()
   if (landing) {
     window.scrollY + window.screen.height >= window.screen.height + rect.height + 120 ? panel.classList.add('bottom') : panel.classList.remove('bottom')
+    if (rect.height + rect.top <= 384) {
+      panel.classList.add('hidden')
+      gender.classList.remove('display')
+    } else {
+      panel.classList.remove('hidden')
+      gender.classList.add('display')
+    }
   } else {
     window.scrollY + window.innerHeight >= parseFloat(getComputedStyle(promo, null).height.replace("px", "")) ?
       panel.classList.add('bottom') :
@@ -349,6 +356,7 @@ let startBox = document.getElementById('promo')
 let endBox = document.querySelector('.description')
 let gallery = document.querySelector('.swiper')
 let header = document.getElementById('header')
+let gender = document.querySelector('.gender-choice')
 let scrollButton = document.querySelector('#bottom .submit')
 
 function initSwiperControls() {
@@ -358,9 +366,14 @@ function initSwiperControls() {
   let endTop = endBox.getBoundingClientRect()
   let bottom = footer.getBoundingClientRect()
 
-  startTop.height + startTop.top - 144 <= 0 && endTop.top - window.screen.height >= 0 ?
-    gallery.classList.remove('hidden-controls') : 
+  if (startTop.height + startTop.top - 144 <= 0 && endTop.top - window.screen.height + 72 >= 0) {
+    gallery.classList.remove('hidden-controls')
+    gender.classList.add('display')
+  } else {
     gallery.classList.add('hidden-controls')
+  }
+
+  startTop.top * -1 >= startTop.height ? gender.classList.add('fixed') : gender.classList.remove('fixed')
 
   startTop.height + startTop.top - 48 <= 0 ?
     header.classList.add('black-style') : header.classList.remove('black-style')
@@ -390,7 +403,7 @@ function initViewportElems() {
   })
 }
 
-let logoH = document.querySelector('#header .logo')
+let logoH = document.getElementById('header')
 let logoF = document.querySelector('#footer .logo')
 
 function initLogoChange() {
@@ -542,7 +555,8 @@ if (product) {
   // Filter
   
   let filterInputs = document.querySelectorAll('.product input')
-  let checked = '';
+  let checked = ''
+  let backLock = ''
   
   filterInputs.forEach(function (input) {
     input.addEventListener('change', function () {
@@ -551,23 +565,26 @@ if (product) {
           checked += check.value
         }
       })
+
+      let index = checked.lastIndexOf("_")
+      backLock = checked.substring(0, index)
+
       swiperBox.style.height = swiper.height + 'px'
       swiper.removeAllSlides()
       swiper.appendSlide([
         '<div class="swiper-slide">\
-          <img data-src="images/'+ checked +'_02.webp" class="swiper-lazy" />\
-          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
+          <img data-src="images/filter/'+ backLock +'_180.webp" class="swiper-lazy" />\
+          <div class="swiper-lazy-preloader"></div>\
         </div>',
+        // '<div class="swiper-slide">\
+        //   <img data-src="images/'+ checked +'_03.webp" class="swiper-lazy" />\
+        // </div>',
+        // '<div class="swiper-slide">\
+        //   <img data-src="images/'+ checked +'_04.webp" class="swiper-lazy" />\
+        // </div>',
         '<div class="swiper-slide">\
-          <img data-src="images/'+ checked +'_03.webp" class="swiper-lazy" />\
-          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
-        </div>',
-        '<div class="swiper-slide">\
-          <img data-src="images/'+ checked +'_04.webp" class="swiper-lazy" />\
-          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
-        </div>',
-        '<div class="swiper-slide">\
-          <img data-src="images/'+ checked +'_01.webp" class="swiper-lazy" />\
+          <img data-src="images/filter/'+ checked +'.webp" class="swiper-lazy" />\
+          <div class="swiper-lazy-preloader"></div>\
           <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
               <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
               <circle cx="9" cy="9" r="1" fill="white" />\
@@ -613,12 +630,23 @@ if (product) {
               <circle cx="9" cy="5" r="1" fill="white" />\
             </svg>\
           </div>\
-          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>\
+          <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
+              <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
+              <circle cx="9" cy="9" r="1" fill="white" />\
+              <circle cx="5" cy="9" r="1" fill="white" />\
+              <circle cx="13" cy="9" r="1" fill="white" />\
+              <circle cx="9" cy="13" r="1" fill="white" />\
+              <circle cx="9" cy="5" r="1" fill="white" />\
+            </svg>\
+          </div>\
         </div>'
        ])
       swiper.lazy.load()
       swiper.update()
-      // swiperBox.removeAttribute('style')
+      swiper.slideTo(0)
+      setTimeout(function(){
+        swiperBox.removeAttribute('style')
+      }, 100)
       checked = ''
     })
   })
