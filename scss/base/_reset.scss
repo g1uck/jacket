@@ -66,6 +66,7 @@ body {
       min-width: 360px;
       background-image: url(../images/mobile.webp);
     }
+    &.navigation {overflow: hidden;}
   }
   .mobile &.home-layout {
     background-position: 0 0;

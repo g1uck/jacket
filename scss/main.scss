@@ -108,12 +108,16 @@ $media-expressions: (
       display: flex;
       max-width: 100%;
       align-items: center;
+      z-index: 110;
       justify-content: space-between;
     }
     @include media('≥tablet') {
       &.black-style {
-        .instagram svg path,
-        .menu-icon svg path {fill: black;}
+        .instagram svg path {fill: black;}
+        .menu-icon svg {
+          path {fill: black;}
+          &:nth-child(2) path {fill: transparent;}
+        }
         .logo svg {
           circle,
           path {fill: black;}
@@ -139,6 +143,90 @@ $media-expressions: (
       }
     }
   }
+  .landing-layout.navigation &,
+  .subscribe-layout.navigation & {
+    .instagram svg path {fill: white;}
+    .menu-icon svg {
+      path {fill: transparent;}
+      &:nth-child(2) path {fill: white;}
+    }
+    .logo svg {
+      circle,
+      path {fill: white;}
+    }
+  }
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  background-color: black(.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 72px;
+  transition: opacity $animation-speed ease;
+  .short-contatcs {
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+  }
+  & > ul {
+    @extend %listreset;
+    text-align: center;
+    display: grid;
+    gap: 36px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    grid-template-columns: repeat(1, 1fr);
+    a {
+      color: white;
+      &:hover {color: $main;}
+    }
+    .active a {color: $main;}
+  }
+  .short-contatcs {
+    display: none;
+    order: inherit;
+    padding: 24px 0 12px;
+  }
+  .copyright {
+    display: none;
+    margin-bottom: 24px;
+  }
+  .social {
+    padding: 0;
+    display: none;
+    justify-content: center;
+    a {margin: 0;}
+  }
+  .navigation & {
+    opacity: 1;
+    pointer-events: all;
+  }
+  @include media('<tablet') {
+    background-color: black(.9);
+    padding-top: 36px;
+    & > ul {
+      gap: 18px;
+      font-size: 14px;
+    }
+    .short-contatcs,
+    .copyright,
+    .social {display: block;}
+  }
 }
 
 .instagram {
@@ -157,11 +245,20 @@ $media-expressions: (
   width: 24px;
   height: 24px;
   pointer-events: all;
+  position: relative;
   svg {
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     path {transition: fill $animation-speed ease;}
+    &:nth-child(2) path {fill: transparent;}
+  }
+  .navigation & svg {
+    path {fill: transparent;}
+    &:nth-child(2) path {fill: white;}
   }
 }
 
@@ -509,19 +606,6 @@ $media-expressions: (
     transform: scale(0);
     transition: transform $animation-speed * 1.5 ease;
   }
-  .desc {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: $animation-speed * 1.5 ease;
-    transition-property: opacity, transform;
-  }
-  strong {
-    display: block;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 12px;
-  }
 
   .temp {
     position: absolute;
@@ -601,16 +685,53 @@ $media-expressions: (
       margin: 0;
       box-shadow: 0 0 0 rgba($main, 0.5);
       animation: pulseShadow 1.5s infinite;
-      display: none; // temp
       svg {
-        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
         width: 100%;
         height: 100%;
+      }
+      .desc {
+        position: absolute;
+        top: -22px;
+        left: -22px;
+        width: 336px;
+        border-radius: 24px;
+        padding: 43px 49px 41px 47px;
+        background-color: black(.6);
+        backdrop-filter: blur(5px);
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $animation-speed ease;
+        strong {
+          display: block;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 24px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-bottom: 6px;
+          color: $main;
+        }
+        p {margin: 0;}
+      }
+      &:hover {
+        animation: none;
+        z-index: 10;
+        .desc {
+          opacity: 1;
+          pointer-events: all;
+        }
       }
       &:nth-of-type(1) {
         right: 50%;
         top: 11.2%;
-        margin-right: -9.6%;
+        margin-right: -9.3%;
       }
       &:nth-of-type(2) {
         left: 50%;
@@ -626,6 +747,10 @@ $media-expressions: (
         right: 50%;
         bottom: 22.5%;
         margin-right: -28.1%;
+        .desc {
+          left: auto;
+          right: -21px;
+        }
       }
       &:nth-of-type(5) {
         left: 50%;
@@ -657,6 +782,16 @@ $media-expressions: (
       }
       .swiper-button-prev {left: 24px;}
       .swiper-button-next {right: 24px;}
+      .point .desc {
+        position: fixed;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+        padding: 24px;
+      }
     }
   }
 }
@@ -828,6 +963,8 @@ $media-expressions: (
       .box {
         pointer-events: all;
         &::before {display: none;}
+        &:nth-child(1) {order: 2;}
+        &:nth-child(2) {order: 1;}
       }
       .parameters {padding: 0;}
     }

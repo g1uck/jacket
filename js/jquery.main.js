@@ -79,6 +79,82 @@ window.addEventListener("resize", function () {
   panelScroll()
 })
 
+// Navigation
+
+let triggerNav = document.querySelector('.menu-icon')
+let nav = document.getElementById('nav')
+
+if (triggerNav) {
+  triggerNav.addEventListener('click', function (e) {
+    e.preventDefault()
+    let body = document.querySelector("body")
+    if (!body.classList.contains('navigation')) {
+      body.classList.add('navigation')
+      disableScroll()
+    } else {
+      body.classList.remove('navigation')
+      enableScroll()
+    }
+  })
+}
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = {
+  37: 1,
+  38: 1,
+  39: 1,
+  40: 1
+};
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+    e.preventDefault();
+  e.returnValue = false;
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+    window.addEventListener('DOMMouseScroll', preventDefault, false);
+  document.addEventListener('wheel', preventDefault, {
+    passive: false
+  }); // Disable scrolling in Chrome
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove = preventDefault; // mobile
+  document.onkeydown = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+  if (window.removeEventListener)
+    window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  document.removeEventListener('wheel', preventDefault, {
+    passive: false
+  }); // Enable scrolling in Chrome
+  window.onmousewheel = document.onmousewheel = null;
+  window.onwheel = null;
+  window.ontouchmove = null;
+  document.onkeydown = null;
+}
+
+// Tooltip
+
+tippy(document.querySelectorAll('[data-tippy-content]'), {
+  onShow(instance) {
+    setTimeout(() => {
+      tippy.hideAll()
+    }, 2000)
+  }
+})
+
 if (history.scrollRestoration) {
   history.scrollRestoration = 'manual'
 } else {
@@ -128,6 +204,7 @@ let inputs = document.querySelectorAll('input, select, textarea')
 inputs.forEach(function (input) {
   // Add a css class on submit when the input is invalid.
   input.addEventListener('invalid', function (e) {
+    console.log('invalid')
     let errorMessage = input.parentNode.querySelector('span.error')
     input.classList.add(invalidClassName)
     e.preventDefault()
@@ -197,12 +274,16 @@ forms.forEach(function (form) {
   let button = form.querySelector('button[type="submit"]')
   if (button) {
     button.addEventListener('click', function () {
-      form.classList.add('errorVisible')
+      setTimeout(() => {
+        if (form.querySelector('input.error')) form.classList.add('errorVisible')
+      }, 50)
     })
   }
 
   form.onsubmit = async (e) => {
     e.preventDefault()
+
+    console.log('onsubmit')
 
     form.classList.remove('errorVisible')
 
@@ -596,6 +677,10 @@ if (product) {
                 <circle cx="9" cy="13" r="1" fill="white" />\
                 <circle cx="9" cy="5" r="1" fill="white" />\
               </svg>\
+              <div class="desc">\
+                <strong>BUILT-IN HEADSET</strong>\
+                <p>Provides the possibility to be on the phone or listen to music without any additional devices</p>\
+              </div>\
             </div>\
             <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
                 <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
@@ -605,6 +690,10 @@ if (product) {
                 <circle cx="9" cy="13" r="1" fill="white" />\
                 <circle cx="9" cy="5" r="1" fill="white" />\
               </svg>\
+              <div class="desc">\
+                <strong>LENS</strong>\
+                <p>Made of UV resistant protective polycarbonate and coated with high-vacuum metal depositing</p>\
+              </div>\
             </div>\
             <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
                 <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
@@ -614,6 +703,10 @@ if (product) {
                 <circle cx="9" cy="13" r="1" fill="white" />\
                 <circle cx="9" cy="5" r="1" fill="white" />\
               </svg>\
+              <div class="desc">\
+                <strong>PREMIUM QUALITY MATERIALS</strong>\
+                <p>Are water resistant PU completed with a waterproof zipper, light and soft “Slimtex“ insulation and printed polyester linen</p>\
+              </div>\
             </div>\
             <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
                 <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
@@ -623,6 +716,10 @@ if (product) {
                 <circle cx="9" cy="13" r="1" fill="white" />\
                 <circle cx="9" cy="5" r="1" fill="white" />\
               </svg>\
+              <div class="desc">\
+                <strong>NFC TOKEN</strong>\
+                <p>Is built into the sleeve and can contain any information or link for quick exchange</p>\
+              </div>\
             </div>\
             <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
                 <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
@@ -632,6 +729,10 @@ if (product) {
                 <circle cx="9" cy="13" r="1" fill="white" />\
                 <circle cx="9" cy="5" r="1" fill="white" />\
               </svg>\
+              <div class="desc">\
+                <strong>SIMULTANEOUS TRANSLATION</strong>\
+                <p>Is carried out between JAXET\'s owners with the help of headset and special APP for smartphone</p>\
+              </div>\
             </div>\
             <div class="point"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">\
                 <circle cx="9" cy="9" r="9" fill="#00D1FF" fill-opacity="0.8" />\
@@ -641,6 +742,10 @@ if (product) {
                 <circle cx="9" cy="13" r="1" fill="white" />\
                 <circle cx="9" cy="5" r="1" fill="white" />\
               </svg>\
+              <div class="desc">\
+                <strong>SECURITY POCKET</strong>\
+                <p>With Faraday grid lining ​​makes your device inside invisible and protects your cards from the scamming, as it cancels all electronic components outside the pocket.</p>\
+              </div>\
             </div>\
           </div>'
         ])
@@ -651,6 +756,7 @@ if (product) {
           swiperBox.removeAttribute('style')
           swiperBox.classList.remove('hidden')
           checked = ''
+          input.blur()
         }, 300)
       }, 300)
     })
